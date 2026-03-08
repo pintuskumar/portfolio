@@ -1,6 +1,5 @@
-"use client";
-
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
+import dynamic from "next/dynamic";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import TechMarquee from "../components/TechMarquee";
@@ -12,24 +11,22 @@ import KeyboardNav from "../components/KeyboardNav";
 import ConsoleEasterEgg from "../components/ConsoleEasterEgg";
 import CommandPalette from "../components/CommandPalette";
 import SectionDivider from "../components/SectionDivider";
+import Preloader from "../components/Preloader";
 
-const About = lazy(() => import("../components/About"));
-const Skills = lazy(() => import("../components/Skills"));
-const Experience = lazy(() => import("../components/Experience"));
-const ProjectReel = lazy(() => import("../components/ProjectReel"));
-const Education = lazy(() => import("../components/Education"));
-const GitHubActivity = lazy(() => import("../components/GitHubActivity"));
-const Contact = lazy(() => import("../components/Contact"));
-const Footer = lazy(() => import("../components/Footer"));
-const ChatWidget = lazy(() => import("../components/ChatWidget"));
-const Preloader = lazy(() => import("../components/Preloader"));
+const About = dynamic(() => import("../components/About"));
+const Skills = dynamic(() => import("../components/Skills"));
+const Experience = dynamic(() => import("../components/Experience"));
+const ProjectReel = dynamic(() => import("../components/ProjectReel"));
+const Education = dynamic(() => import("../components/Education"));
+const GitHubActivity = dynamic(() => import("../components/GitHubActivity"));
+const Contact = dynamic(() => import("../components/Contact"));
+const Footer = dynamic(() => import("../components/Footer"));
+const ChatWidget = dynamic(() => import("../components/ChatWidget"));
 
 export default function Home() {
   return (
     <>
-      <Suspense fallback={null}>
-        <Preloader />
-      </Suspense>
+      <Preloader />
       <SmoothScroll>
         <ScrollProgress />
         <CustomCursor />

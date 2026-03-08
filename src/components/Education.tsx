@@ -100,6 +100,7 @@ export default function Education() {
               Education
             </motion.h3>
 
+            <div className="space-y-4">
             {education.map((edu) => (
               <motion.div
                 key={edu.id}
@@ -145,6 +146,7 @@ export default function Education() {
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
 
           {/* Right column - Certifications */}

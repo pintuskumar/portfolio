@@ -20,6 +20,11 @@ export default function Navbar() {
   const [hidden, setHidden] = useState(false);
   const [activeSection, setActiveSection] = useState("#home");
   const [scrolled, setScrolled] = useState(false);
+  const [isMac, setIsMac] = useState(false);
+
+  useEffect(() => {
+    setIsMac(navigator.platform?.toUpperCase().includes("MAC") || navigator.userAgent.includes("Mac"));
+  }, []);
 
   const lastScrollY = useRef(0);
 
@@ -141,7 +146,7 @@ export default function Navbar() {
             >
               <Search className="h-3 w-3" />
               <span>Search</span>
-              <kbd className="rounded bg-white/10 px-1 py-0.5 text-[10px] font-mono">⌘K</kbd>
+              <kbd className="rounded bg-white/10 px-1 py-0.5 text-[10px] font-mono">{isMac ? "⌘" : "Ctrl+"}K</kbd>
             </button>
 
             <ThemeToggle />
@@ -204,8 +209,17 @@ export default function Navbar() {
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
               className="fixed right-0 top-0 z-[70] flex h-full w-[calc(100vw-4rem)] sm:w-72 flex-col bg-gray-950/95 backdrop-blur-2xl border-l border-white/10 md:hidden"
             >
-              {/* Spacer for navbar height */}
-              <div className="h-16" />
+              {/* Header with close button */}
+              <div className="flex h-16 items-center justify-end px-4">
+                <motion.button
+                  onClick={() => setIsOpen(false)}
+                  whileTap={{ scale: 0.9 }}
+                  aria-label="Close navigation menu"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-gray-300 transition-colors hover:bg-white/10 hover:text-white cursor-pointer"
+                >
+                  <X className="h-5 w-5" />
+                </motion.button>
+              </div>
 
               {/* Nav links */}
               <nav className="flex-1 overflow-y-auto px-4 py-6">

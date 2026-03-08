@@ -40,7 +40,10 @@ export default function VoiceIntro() {
       audioRef.current = audio;
 
       audio.addEventListener("ended", () => setState("idle"));
-      audio.addEventListener("error", () => setState("error"));
+      audio.addEventListener("error", () => {
+        setState("error");
+        URL.revokeObjectURL(url);
+      });
 
       await audio.play();
       setState("playing");

@@ -59,6 +59,7 @@ export default function GitHubHeatmap() {
   const isInView = useInView(ref, { once: true, margin: "-50px" });
 
   useEffect(() => {
+    // Generate on client only to avoid hydration mismatch from Math.random()
     const days = generateHeatmapData();
     setData(days);
     setTotalContribs(days.reduce((sum, d) => sum + d.count, 0));
@@ -99,6 +100,7 @@ export default function GitHubHeatmap() {
       <div className="flex items-center justify-between mb-3">
         <h4 className="text-sm font-semibold text-white flex items-center gap-2">
           <span className="text-emerald-400">{totalContribs}</span> contributions in the last year
+          <span className="text-[10px] text-gray-600 font-normal">(approximate)</span>
         </h4>
         <a
           href="https://github.com/pintu544"

@@ -4,12 +4,19 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 import MagneticButton from "./MagneticButton";
+import { socialLinks as socialData } from "../data/portfolio-data";
 
-const socialLinks = [
-  { icon: Github, href: "https://github.com/pintu544", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/pintukumar12", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:pksharmagh4@gmail.com", label: "Email" },
-];
+const iconMap: Record<string, React.ComponentType<{ className?: string; size?: number }>> = {
+  Github,
+  Linkedin,
+  Mail,
+};
+
+const socialLinks = socialData.map((link) => ({
+  icon: iconMap[link.icon] || Mail,
+  href: link.url,
+  label: link.name,
+}));
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -68,6 +75,11 @@ export default function Footer() {
 
           {/* Divider */}
           <div className="my-8 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
+
+          {/* Copyright */}
+          <p className="text-center text-sm text-gray-500">
+            &copy; {new Date().getFullYear()} Pintu Kumar. All rights reserved.
+          </p>
         </div>
       </motion.footer>
 

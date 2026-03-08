@@ -18,6 +18,7 @@ export default function MouseTrail() {
     if (!ctx) return;
 
     let animId: number;
+    let isAnimating = false;
     const trail: { x: number; y: number; age: number }[] = [];
     let mouseX = -100;
     let mouseY = -100;
@@ -32,6 +33,11 @@ export default function MouseTrail() {
       mouseY = e.clientY;
       trail.push({ x: mouseX, y: mouseY, age: 1 });
       if (trail.length > TRAIL_LENGTH) trail.shift();
+      // Start animation loop if idle
+      if (!isAnimating) {
+        isAnimating = true;
+        animId = requestAnimationFrame(draw);
+      }
     };
 
     const draw = () => {
@@ -63,13 +69,18 @@ export default function MouseTrail() {
         trail.shift();
       }
 
+      // Stop animation when trail is empty (idle optimization)
+      if (trail.length === 0) {
+        isAnimating = false;
+        return;
+      }
+
       animId = requestAnimationFrame(draw);
     };
 
     resize();
     window.addEventListener("resize", resize);
     window.addEventListener("mousemove", onMouseMove);
-    animId = requestAnimationFrame(draw);
 
     return () => {
       window.removeEventListener("resize", resize);

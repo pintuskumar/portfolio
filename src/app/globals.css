@@ -3,8 +3,8 @@
 @theme inline {
   --color-background: #030712;
   --color-foreground: #f9fafb;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains);
 }
 
 * {
@@ -302,16 +302,6 @@ html.light .bg-gray-950\/95 {
   background-color: rgba(248, 250, 252, 0.97) !important;
 }
 
-/* Light mode: nav text */
-html.light .text-gray-300 {
-  color: #334155 !important;
-}
-
-/* Light mode: hero section bg */
-html.light .from-slate-950.via-slate-900.to-indigo-950 {
-  background: linear-gradient(135deg, #eef2ff, #e0e7ff, #eef2ff) !important;
-}
-
 /* Light mode: slate text */
 html.light .text-slate-500 {
   color: #64748b !important;
@@ -334,7 +324,13 @@ body {
   color: #f9fafb;
   font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
-  cursor: none;
+}
+
+/* Custom cursor only when JS has loaded (class added by CustomCursor) */
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
 }
 
 /* Apply heading font to all section titles */
@@ -593,17 +589,7 @@ html.light .glass-card {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
 
-/* Light mode: project reel cards */
-html.light .bg-gray-900\/80 {
-  background-color: rgba(255, 255, 255, 0.85) !important;
-}
-
 /* Light mode: project card inner content */
 html.light .bg-gray-900\/95 {
   background-color: rgba(255, 255, 255, 0.95) !important;
-}
-
-/* Light mode: navbar mobile slide-in panel */
-html.light .bg-gray-950\/95 {
-  background-color: rgba(248, 250, 252, 0.97) !important;
 }

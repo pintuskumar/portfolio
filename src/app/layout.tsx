@@ -6,7 +6,7 @@ import JsonLd from "../components/JsonLd";
 import ServiceWorkerRegister from "../components/ServiceWorkerRegister";
 
 const inter = Inter({
-  variable: "--font-geist-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
 });
@@ -18,7 +18,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-geist-mono",
+  variable: "--font-jetbrains",
   subsets: ["latin"],
   display: "swap",
 });

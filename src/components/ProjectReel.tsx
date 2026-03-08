@@ -90,7 +90,7 @@ export default function ProjectReel() {
   );
 
   return (
-    <section id="project-reel" className="relative bg-gray-950">
+    <section id="projects" className="relative bg-gray-950">
       {/* Pinned scroll container - height determines scroll length */}
       <div ref={containerRef} style={{ height: `${projects.length * 80}vh` }}>
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">

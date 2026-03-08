@@ -2,10 +2,12 @@
 
 import { useEffect, useState, useRef, lazy, Suspense } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { Github, Linkedin, Mail, ChevronDown, ExternalLink, FileDown } from "lucide-react";
 import MagneticButton from "./MagneticButton";
 import VoiceIntro from "./VoiceIntro";
 import CurrentlyWorkingOn from "./CurrentlyWorkingOn";
+import { socialLinks as socialData } from "../data/portfolio-data";
 
 const ParticleField = lazy(() => import("./ParticleField"));
 
@@ -13,11 +15,17 @@ const name = "Pintu Kumar";
 const roles = ["Full Stack Software Developer", "Backend Developer", "Frontend Architect", "Cloud Enthusiast"];
 const tagline = "Building scalable web applications with modern technologies";
 
-const socialLinks = [
-  { icon: Github, href: "https://github.com/pintu544", label: "GitHub" },
-  { icon: Linkedin, href: "https://linkedin.com/in/pintukumar12", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:pksharmagh4@gmail.com", label: "Email" },
-];
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Github,
+  Linkedin,
+  Mail,
+};
+
+const socialLinks = socialData.map((link) => ({
+  icon: iconMap[link.icon] || Mail,
+  href: link.url,
+  label: link.name,
+}));
 
 function TypingEffect({ words }: { words: string[] }) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
@@ -139,9 +147,12 @@ export default function Hero() {
         >
           <div className="relative mx-auto h-24 w-24 sm:h-28 sm:w-28">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-[2px]">
-              <img
+              <Image
                 src="/photo.jpg"
                 alt="Pintu Kumar"
+                width={112}
+                height={112}
+                priority
                 className="h-full w-full rounded-full object-cover"
               />
             </div>

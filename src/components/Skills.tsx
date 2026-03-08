@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Code2, Server, Cloud, Wrench, Layers } from "lucide-react";
 import { skills } from "../data/portfolio-data";
+import { categoryGradients, categoryAccentText, categoryRing, categoryGlow } from "../lib/skill-colors";
 import { gsap } from "../lib/gsap-init";
 import { lazy, Suspense, Component, type ReactNode } from "react";
 
@@ -33,33 +34,6 @@ const categories: { label: Category; icon: React.ReactNode }[] = [
   { label: "Tools", icon: <Wrench className="h-4 w-4" /> },
 ];
 
-const categoryGradients: Record<string, string> = {
-  Frontend: "from-blue-500 to-cyan-400",
-  Backend: "from-green-500 to-emerald-400",
-  DevOps: "from-orange-500 to-amber-400",
-  Tools: "from-purple-500 to-violet-400",
-};
-
-const categoryAccentText: Record<string, string> = {
-  Frontend: "text-blue-400",
-  Backend: "text-green-400",
-  DevOps: "text-orange-400",
-  Tools: "text-purple-400",
-};
-
-const categoryRing: Record<string, string> = {
-  Frontend: "ring-blue-500/30",
-  Backend: "ring-green-500/30",
-  DevOps: "ring-orange-500/30",
-  Tools: "ring-purple-500/30",
-};
-
-const categoryGlow: Record<string, string> = {
-  Frontend: "shadow-blue-500/20",
-  Backend: "shadow-green-500/20",
-  DevOps: "shadow-orange-500/20",
-  Tools: "shadow-purple-500/20",
-};
 
 function SkillCard({
   skill,

@@ -1,10 +1,23 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Home, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export default function NotFound() {
+  // Pre-compute random positions to avoid hydration mismatch
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 12 }).map((_, i) => ({
+        left: `${10 + ((i * 37 + 13) % 80)}%`,
+        top: `${10 + ((i * 53 + 7) % 80)}%`,
+        duration: 3 + (i % 4),
+        delay: (i % 5) * 0.4,
+      })),
+    []
+  );
+
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gray-950 px-6">
       {/* Background effects */}
@@ -92,13 +105,13 @@ export default function NotFound() {
 
         {/* Floating particles */}
         <div className="pointer-events-none absolute inset-0">
-          {Array.from({ length: 12 }).map((_, i) => (
+          {particles.map((p, i) => (
             <motion.div
               key={i}
               className="absolute h-1 w-1 rounded-full bg-indigo-400/30"
               style={{
-                left: `${10 + Math.random() * 80}%`,
-                top: `${10 + Math.random() * 80}%`,
+                left: p.left,
+                top: p.top,
               }}
               animate={{
                 opacity: [0.2, 0.7, 0.2],
@@ -106,8 +119,8 @@ export default function NotFound() {
                 y: [0, -20, 0],
               }}
               transition={{
-                duration: 3 + Math.random() * 3,
-                delay: Math.random() * 2,
+                duration: p.duration,
+                delay: p.delay,
                 repeat: Infinity,
                 ease: "easeInOut",
               }}

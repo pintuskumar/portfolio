@@ -52,6 +52,7 @@ export default function GitHubActivity() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
+    if (!isInView) return;
     fetch("https://api.github.com/users/pintu544/events/public?per_page=6")
       .then((res) => res.json())
       .then((data: GitHubEvent[]) => {
@@ -62,7 +63,7 @@ export default function GitHubActivity() {
       })
       .catch(() => setEvents([]))
       .finally(() => setLoading(false));
-  }, []);
+  }, [isInView]);
 
   if (!loading && events.length === 0) return null;
 

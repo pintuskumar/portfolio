@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Loader2, CheckCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Loader2, CheckCircle, Eye } from "lucide-react";
 import { socialLinks } from "../data/portfolio-data";
 import LocationMap from "./LocationMap";
 import CopyEmail from "./CopyEmail";
@@ -23,7 +23,8 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 8709793486",
+    value: "+91 87097•••••",
+    revealValue: "+91 8709793486",
     href: "tel:+918709793486",
   },
   {
@@ -55,6 +56,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [phoneRevealed, setPhoneRevealed] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -138,6 +140,8 @@ export default function Contact() {
             <div className="space-y-4">
               {contactInfo.map((info) => {
                 const Icon = info.icon;
+                const hasReveal = "revealValue" in info && info.revealValue;
+                const displayValue = hasReveal && phoneRevealed ? info.revealValue : info.value;
                 const content = (
                   <motion.div
                     key={info.label}
@@ -148,20 +152,35 @@ export default function Contact() {
                     <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20">
                       <Icon className="w-5 h-5 text-purple-400" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <p className="text-sm text-gray-500">{info.label}</p>
-                      <p className="text-white font-medium">{info.value}</p>
+                      <p className="text-white font-medium">{displayValue}</p>
                     </div>
+                    {hasReveal && !phoneRevealed && (
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setPhoneRevealed(true);
+                        }}
+                        className="text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
+                      >
+                        <Eye className="w-3 h-3" />
+                        Reveal
+                      </button>
+                    )}
                   </motion.div>
                 );
 
-                return info.href ? (
+                const effectiveHref = hasReveal && !phoneRevealed ? null : info.href;
+
+                return effectiveHref ? (
                   <a
                     key={info.label}
-                    href={info.href}
+                    href={effectiveHref}
                     className="block"
                     target={
-                      info.href.startsWith("mailto:") ? undefined : "_blank"
+                      effectiveHref.startsWith("mailto:") ? undefined : "_blank"
                     }
                     rel="noopener noreferrer"
                   >

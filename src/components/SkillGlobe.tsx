@@ -4,6 +4,8 @@ import { useRef, useMemo, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, OrbitControls, Line } from "@react-three/drei";
 import * as THREE from "three";
+import { skills as portfolioSkills } from "../data/portfolio-data";
+import { CATEGORY_COLORS } from "../lib/skill-colors";
 
 interface SkillNode {
   name: string;
@@ -11,31 +13,11 @@ interface SkillNode {
   color: string;
 }
 
-const SKILL_DATA = [
-  { name: "React", category: "Frontend" },
-  { name: "TypeScript", category: "Frontend" },
-  { name: "JavaScript", category: "Frontend" },
-  { name: "Next.js", category: "Frontend" },
-  { name: "Tailwind", category: "Frontend" },
-  { name: "Redux", category: "Frontend" },
-  { name: "Node.js", category: "Backend" },
-  { name: "Express", category: "Backend" },
-  { name: "PostgreSQL", category: "Backend" },
-  { name: "MongoDB", category: "Backend" },
-  { name: "SQL", category: "Backend" },
-  { name: "Socket.io", category: "Backend" },
-  { name: "Docker", category: "DevOps" },
-  { name: "AWS", category: "DevOps" },
-  { name: "Git", category: "Tools" },
-  { name: "Postman", category: "Tools" },
-];
-
-const CATEGORY_COLORS: Record<string, string> = {
-  Frontend: "#60a5fa",
-  Backend: "#4ade80",
-  DevOps: "#fb923c",
-  Tools: "#a78bfa",
-};
+// Derive from portfolio data, limit to 16 for clean globe layout
+const SKILL_DATA = portfolioSkills.slice(0, 16).map((s) => ({
+  name: s.name.replace(/ \(.*\)/, ""), // Clean up names like "AWS (EC2/S3/RDS)"
+  category: s.category,
+}));
 
 function distributeOnSphere(count: number, radius: number): [number, number, number][] {
   const points: [number, number, number][] = [];

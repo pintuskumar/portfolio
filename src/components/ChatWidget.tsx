@@ -5,15 +5,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Loader2, Bot, User } from "lucide-react";
 
 interface Message {
+  id: string;
   role: "user" | "assistant";
   content: string;
 }
 
-const INITIAL_MESSAGE: Message = {
-  role: "assistant",
-  content:
-    "Hi! I'm Pintu's AI assistant. Ask me anything about his skills, experience, projects, or education!",
-};
+let messageIdCounter = 0;
+function createMessage(role: "user" | "assistant", content: string): Message {
+  return { id: `msg-${++messageIdCounter}`, role, content };
+}
+
+const INITIAL_MESSAGE: Message = createMessage(
+  "assistant",
+  "Hi! I'm Pintu's AI assistant. Ask me anything about his skills, experience, projects, or education!"
+);
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +44,7 @@ export default function ChatWidget() {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
-    const userMessage: Message = { role: "user", content: input.trim() };
+    const userMessage = createMessage("user", input.trim());
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
     setInput("");
@@ -64,7 +69,8 @@ export default function ChatWidget() {
       const decoder = new TextDecoder();
       let assistantContent = "";
 
-      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+      const assistantMsg = createMessage("assistant", "");
+      setMessages((prev) => [...prev, assistantMsg]);
 
       while (true) {
         const { done, value } = await reader.read();
@@ -74,7 +80,7 @@ export default function ChatWidget() {
         setMessages((prev) => {
           const updated = [...prev];
           updated[updated.length - 1] = {
-            role: "assistant",
+            ...updated[updated.length - 1],
             content: assistantContent,
           };
           return updated;
@@ -83,10 +89,7 @@ export default function ChatWidget() {
     } catch {
       setMessages((prev) => [
         ...prev,
-        {
-          role: "assistant",
-          content: "Sorry, I couldn't process that. Please try again.",
-        },
+        createMessage("assistant", "Sorry, I couldn't process that. Please try again."),
       ]);
     } finally {
       setIsLoading(false);
@@ -153,9 +156,9 @@ export default function ChatWidget() {
               className="flex-1 overflow-y-auto px-4 py-3 space-y-3"
               data-lenis-prevent
             >
-              {messages.map((msg, i) => (
+              {messages.map((msg) => (
                 <motion.div
-                  key={i}
+                  key={msg.id}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.2 }}

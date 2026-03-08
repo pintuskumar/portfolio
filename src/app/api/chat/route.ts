@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import OpenAI from "openai";
 import { skills, experiences, projects, education, verifiedCertificateLinks } from "../../../data/portfolio-data";
+import { rateLimit } from "../../../lib/rate-limit";
 
 const openai = new OpenAI({
   apiKey: process.env.FASTROUTER_API_KEY,
@@ -39,6 +40,20 @@ Keep responses brief (2-4 sentences) unless the user asks for details.`;
 
 export async function POST(req: NextRequest) {
   try {
+    // Rate limit: 20 messages per hour per IP
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      req.headers.get("x-real-ip") ||
+      "127.0.0.1";
+    const { success } = await rateLimit(`chat:${ip}`, 20, 3600);
+
+    if (!success) {
+      return new Response(
+        JSON.stringify({ error: "Too many requests. Please try again later." }),
+        { status: 429, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
     const { messages } = await req.json();
 
     if (!messages || !Array.isArray(messages)) {
