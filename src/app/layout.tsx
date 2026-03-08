@@ -88,7 +88,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html lang="en" className="dark overflow-x-hidden" suppressHydrationWarning>
       <head>
         <JsonLd />
         <link rel="preconnect" href="https://api.github.com" />
@@ -96,7 +96,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#030712" />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-gray-950 text-gray-50`}
+        className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased bg-gray-950 text-gray-50 overflow-x-hidden`}
       >
         <PostHogProvider>{children}</PostHogProvider>
         <ServiceWorkerRegister />

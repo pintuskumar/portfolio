@@ -123,7 +123,7 @@ export const projects: Project[] = [
     description:
       "Unified interface to interact with multiple AI models simultaneously with local chat history, syntax highlighting, and different query modes.",
     technologies: ["React", "Express", "MongoDB", "Tailwind", "Node.js"],
-    liveUrl: "https://multi-ais-chat.netlify.app",
+    liveUrl: "https://multi-ais-chats.netlify.app",
     featured: true,
   },
   {
