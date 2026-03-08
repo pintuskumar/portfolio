@@ -19,6 +19,7 @@ const Experience = dynamic(() => import("../components/Experience"));
 const ProjectReel = dynamic(() => import("../components/ProjectReel"));
 const Education = dynamic(() => import("../components/Education"));
 const GitHubActivity = dynamic(() => import("../components/GitHubActivity"));
+const ProjectArchitecture = dynamic(() => import("../components/ProjectArchitecture"));
 const Contact = dynamic(() => import("../components/Contact"));
 const Footer = dynamic(() => import("../components/Footer"));
 const ChatWidget = dynamic(() => import("../components/ChatWidget"));
@@ -55,6 +56,10 @@ export default function Home() {
           <SectionDivider />
           <Suspense fallback={null}>
             <ProjectReel />
+          </Suspense>
+          <SectionDivider />
+          <Suspense fallback={null}>
+            <ProjectArchitecture />
           </Suspense>
           <SectionDivider />
           <Suspense fallback={null}>
