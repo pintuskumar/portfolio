@@ -58,7 +58,7 @@ export default function VoiceIntro() {
       onClick={handleClick}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.95 }}
-      className="group relative inline-flex items-center gap-2 px-5 py-4 rounded-xl border border-slate-600 text-slate-300 font-semibold hover:border-purple-500/50 hover:text-white hover:bg-purple-500/10 transition-all duration-300 cursor-pointer"
+      className="group relative inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-4 rounded-xl border border-slate-600 text-slate-300 font-semibold hover:border-purple-500/50 hover:text-white hover:bg-purple-500/10 transition-all duration-300 cursor-pointer"
       title={state === "playing" ? "Stop intro" : "Listen to voice intro"}
     >
       {state === "loading" ? (

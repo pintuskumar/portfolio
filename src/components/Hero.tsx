@@ -110,7 +110,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden overflow-x-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950"
     >
       {/* 3D Particle field background */}
       <Suspense fallback={null}>
@@ -136,7 +136,7 @@ export default function Hero() {
 
       {/* Main content with parallax */}
       <motion.div
-        className="relative z-10 max-w-5xl mx-auto px-6 pt-20 md:pt-24 text-center"
+        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-20 md:pt-24 text-center w-full"
         style={{ opacity: contentOpacity, y: contentY }}
       >
         {/* Avatar */}
@@ -235,9 +235,9 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
           custom={1.2}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+          className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-12"
         >
-          <MagneticButton as="a" href="#projects" className="group relative inline-flex items-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl bg-indigo-600 text-white font-semibold text-base sm:text-lg overflow-hidden transition-shadow hover:shadow-lg hover:shadow-indigo-500/25">
+          <MagneticButton as="a" href="#projects" className="group relative inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl bg-indigo-600 text-white font-semibold text-base sm:text-lg overflow-hidden transition-shadow hover:shadow-lg hover:shadow-indigo-500/25">
             <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative flex items-center gap-2">
               View Projects
@@ -255,7 +255,7 @@ export default function Hero() {
                 body: JSON.stringify({ action: "download" }),
               }).catch(() => {});
             }}
-            className="group inline-flex items-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl border border-slate-600 text-slate-300 font-semibold text-base sm:text-lg hover:border-indigo-500/50 hover:text-white hover:bg-indigo-500/10 transition-all duration-300"
+            className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl border border-slate-600 text-slate-300 font-semibold text-base sm:text-lg hover:border-indigo-500/50 hover:text-white hover:bg-indigo-500/10 transition-all duration-300"
           >
             <FileDown className="w-5 h-5 group-hover:animate-bounce" />
             Download Resume
@@ -294,7 +294,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Currently Working On — outside parallax so it doesn't fade on scroll */}
-      <div className="relative z-10 max-w-lg mx-auto px-6 mt-8 pb-24 text-center">
+      <div className="relative z-10 max-w-lg mx-auto px-4 sm:px-6 mt-8 pb-24 text-center w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
