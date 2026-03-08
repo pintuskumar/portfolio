@@ -55,78 +55,28 @@ html.dark body {
 }
 
 /* ====================== */
-/* Light theme            */
+/* Light theme (complete) */
 /* ====================== */
 html.light body {
   background: #f8fafc;
   color: #0f172a;
 }
 
-html.light section {
-  background: transparent !important;
-}
-
-html.light .bg-gray-950 {
+/* --- Backgrounds --- */
+html.light section,
+html.light .bg-gray-950,
+html.light .bg-gray-950\/95,
+html.light .bg-gray-950\/80 {
   background-color: #f8fafc !important;
 }
 
 html.light .bg-gray-900\/90,
 html.light .bg-gray-900\/70,
-html.light .bg-gray-900\/95 {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-}
-
+html.light .bg-gray-900\/95,
+html.light .bg-gray-900\/80,
 html.light .bg-zinc-900\/90,
 html.light .bg-zinc-900\/70 {
   background-color: rgba(255, 255, 255, 0.9) !important;
-}
-
-html.light .bg-gray-950\/95 {
-  background-color: rgba(255, 255, 255, 0.95) !important;
-}
-
-html.light .text-white {
-  color: #0f172a !important;
-}
-
-html.light .text-gray-400,
-html.light .text-gray-300 {
-  color: #475569 !important;
-}
-
-html.light .text-gray-500 {
-  color: #64748b !important;
-}
-
-html.light .text-gray-600 {
-  color: #94a3b8 !important;
-}
-
-html.light .text-slate-400 {
-  color: #475569 !important;
-}
-
-html.light .text-slate-300 {
-  color: #334155 !important;
-}
-
-html.light .text-zinc-400 {
-  color: #475569 !important;
-}
-
-html.light .border-white\/10,
-html.light .border-white\/5 {
-  border-color: rgba(0, 0, 0, 0.08) !important;
-}
-
-html.light .border-gray-800,
-html.light .border-gray-800\/60 {
-  border-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-html.light .border-slate-600,
-html.light .border-slate-700 {
-  border-color: rgba(0, 0, 0, 0.15) !important;
 }
 
 html.light .bg-white\/5,
@@ -138,25 +88,147 @@ html.light .bg-white\/10 {
   background-color: rgba(0, 0, 0, 0.05) !important;
 }
 
+html.light .bg-gray-800\/60,
+html.light .bg-gray-800\/50 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* --- Text --- */
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-gray-300,
+html.light .text-gray-400,
+html.light .text-slate-300,
+html.light .text-slate-400,
+html.light .text-zinc-400 {
+  color: #475569 !important;
+}
+
+html.light .text-gray-500,
+html.light .text-slate-500 {
+  color: #64748b !important;
+}
+
+html.light .text-gray-600 {
+  color: #94a3b8 !important;
+}
+
+/* Keep accent colors visible */
+html.light .bg-clip-text.text-transparent {
+  color: transparent !important;
+}
+
+/* --- Borders --- */
+html.light .border-white\/10,
+html.light .border-white\/5 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .border-gray-800,
+html.light .border-gray-800\/60,
+html.light .border-gray-700 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .border-slate-600,
+html.light .border-slate-700 {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+/* --- Rings & Shadows --- */
 html.light .ring-white\/10,
 html.light .ring-white\/20 {
   --tw-ring-color: rgba(0, 0, 0, 0.08) !important;
 }
 
 html.light .shadow-black\/20,
-html.light .shadow-black\/40 {
+html.light .shadow-black\/40,
+html.light .shadow-black\/50 {
   --tw-shadow-color: rgba(0, 0, 0, 0.05) !important;
 }
 
+/* --- Navbar --- */
 html.light nav {
-  background-color: rgba(248, 250, 252, 0.8) !important;
+  background-color: rgba(248, 250, 252, 0.85) !important;
   backdrop-filter: blur(16px) !important;
 }
 
-html.light .bg-gradient-to-b.from-zinc-950,
-html.light .bg-gradient-to-br.from-gray-950,
-html.light .bg-gradient-to-br.from-slate-950 {
-  background: linear-gradient(135deg, #f1f5f9, #e2e8f0, #f1f5f9) !important;
+html.light .bg-gray-950\/95 {
+  background-color: rgba(248, 250, 252, 0.97) !important;
+}
+
+/* --- Section gradients → light versions --- */
+html.light .from-slate-950,
+html.light .from-zinc-950,
+html.light .from-gray-950 {
+  --tw-gradient-from: #f1f5f9 !important;
+}
+
+html.light .via-slate-900,
+html.light .via-zinc-900,
+html.light .via-gray-900 {
+  --tw-gradient-via: #e2e8f0 !important;
+}
+
+html.light .to-indigo-950,
+html.light .to-zinc-950,
+html.light .to-gray-950 {
+  --tw-gradient-to: #f1f5f9 !important;
+}
+
+/* --- Gradient fade edges (TechMarquee) --- */
+html.light .from-gray-950.to-transparent {
+  --tw-gradient-from: #f8fafc !important;
+}
+
+/* --- GitHub Heatmap --- */
+html.light .bg-gray-800\/50 {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+html.light .bg-emerald-900\/60 {
+  background-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+html.light .bg-emerald-700\/70 {
+  background-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+html.light .bg-emerald-500\/80 {
+  background-color: rgba(16, 185, 129, 0.6) !important;
+}
+
+/* --- CodeSnippet window --- */
+html.light .bg-\[\#1e1e1e\] {
+  background-color: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .bg-\[\#252526\] {
+  background-color: #f8fafc !important;
+}
+
+/* --- Education/Experience card gradient borders --- */
+html.light .via-gray-800 {
+  --tw-gradient-via: #e2e8f0 !important;
+}
+
+/* --- LocationMap badge --- */
+html.light .bg-gray-950\/80 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* --- Leaflet map light styles --- */
+html.light .leaflet-container {
+  background: #f1f5f9 !important;
+}
+
+/* --- Preloader --- */
+html.light .bg-gray-950:has(~ .min-h-screen),
+html.light [role="status"].bg-gray-950 {
+  background-color: #f8fafc !important;
 }
 
 /* Light mode: gradient text must stay visible */
@@ -220,6 +292,26 @@ html.light .from-slate-950.via-slate-900.to-indigo-950 {
   background: linear-gradient(135deg, #eef2ff, #e0e7ff, #eef2ff) !important;
 }
 
+/* Light mode: project reel cards */
+html.light .bg-gray-900\/80 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Light mode: navbar mobile slide-in panel */
+html.light .bg-gray-950\/95 {
+  background-color: rgba(248, 250, 252, 0.97) !important;
+}
+
+/* Light mode: nav text */
+html.light .text-gray-300 {
+  color: #334155 !important;
+}
+
+/* Light mode: hero section bg */
+html.light .from-slate-950.via-slate-900.to-indigo-950 {
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff, #eef2ff) !important;
+}
+
 /* Light mode: slate text */
 html.light .text-slate-500 {
   color: #64748b !important;
@@ -243,6 +335,11 @@ body {
   font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
   cursor: none;
+}
+
+/* Apply heading font to all section titles */
+h1, h2, h3 {
+  font-family: var(--font-heading), var(--font-sans), system-ui, sans-serif;
 }
 
 /* Show default cursor on touch devices */

@@ -19,6 +19,7 @@ function loadLeafletCSS() {
 
 function injectMapStyles() {
   if (document.querySelector("#leaflet-custom-styles")) return;
+  const isLight = document.documentElement.classList.contains("light");
   const style = document.createElement("style");
   style.id = "leaflet-custom-styles";
   style.textContent = `
@@ -28,25 +29,25 @@ function injectMapStyles() {
       50% { transform: scale(1.2); }
     }
     .leaflet-tile-pane { opacity: 1 !important; }
-    .leaflet-container { background: #0f0d2e !important; }
+    .leaflet-container { background: ${isLight ? "#f1f5f9" : "#0f0d2e"} !important; }
     .leaflet-popup-content-wrapper {
-      background: #1e1b4b !important;
-      color: #fff !important;
+      background: ${isLight ? "#ffffff" : "#1e1b4b"} !important;
+      color: ${isLight ? "#0f172a" : "#fff"} !important;
       border-radius: 12px !important;
-      border: 1px solid rgba(99,102,241,0.3) !important;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4) !important;
+      border: 1px solid ${isLight ? "rgba(0,0,0,0.1)" : "rgba(99,102,241,0.3)"} !important;
+      box-shadow: 0 10px 30px ${isLight ? "rgba(0,0,0,0.1)" : "rgba(0,0,0,0.4)"} !important;
     }
-    .leaflet-popup-tip { background: #1e1b4b !important; }
+    .leaflet-popup-tip { background: ${isLight ? "#ffffff" : "#1e1b4b"} !important; }
     .leaflet-popup-content { margin: 8px 12px !important; }
-    .leaflet-popup-close-button { color: #a5b4fc !important; }
+    .leaflet-popup-close-button { color: ${isLight ? "#6366f1" : "#a5b4fc"} !important; }
     .leaflet-control-zoom a {
-      background: #1e1b4b !important;
-      color: #a5b4fc !important;
-      border-color: rgba(99,102,241,0.3) !important;
+      background: ${isLight ? "#ffffff" : "#1e1b4b"} !important;
+      color: ${isLight ? "#6366f1" : "#a5b4fc"} !important;
+      border-color: ${isLight ? "rgba(0,0,0,0.1)" : "rgba(99,102,241,0.3)"} !important;
     }
-    .leaflet-control-zoom a:hover { background: #312e81 !important; }
+    .leaflet-control-zoom a:hover { background: ${isLight ? "#f1f5f9" : "#312e81"} !important; }
     .leaflet-control-attribution { font-size: 10px !important; opacity: 0.5; }
-    .leaflet-control-attribution a { color: #a5b4fc !important; }
+    .leaflet-control-attribution a { color: ${isLight ? "#6366f1" : "#a5b4fc"} !important; }
   `;
   document.head.appendChild(style);
 }
@@ -164,7 +165,7 @@ export default function LocationMap() {
         <div
           ref={mapContainerRef}
           className="h-[250px] sm:h-[300px] w-full"
-          style={{ background: "#0f0d2e", zIndex: 0 }}
+          style={{ zIndex: 0 }}
         />
 
         {/* Location badge overlay */}
