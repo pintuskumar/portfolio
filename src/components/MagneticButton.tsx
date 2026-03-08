@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 interface MagneticButtonProps {
   children: React.ReactNode;
   className?: string;
+  wrapperClassName?: string;
   as?: "button" | "a";
   strength?: number;
   [key: string]: unknown;
@@ -14,6 +15,7 @@ interface MagneticButtonProps {
 export default function MagneticButton({
   children,
   className = "",
+  wrapperClassName,
   as = "button",
   strength = 0.3,
   ...props
@@ -41,7 +43,7 @@ export default function MagneticButton({
       onMouseLeave={reset}
       animate={{ x: position.x, y: position.y }}
       transition={{ type: "spring", stiffness: 150, damping: 15, mass: 0.1 }}
-      className="inline-block"
+      className={wrapperClassName || "inline-block"}
     >
       <Component className={className} {...props}>
         {children}

@@ -237,7 +237,7 @@ export default function Hero() {
           custom={1.2}
           className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-12"
         >
-          <MagneticButton as="a" href="#projects" className="group relative inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl bg-indigo-600 text-white font-semibold text-base sm:text-lg overflow-hidden transition-shadow hover:shadow-lg hover:shadow-indigo-500/25">
+          <MagneticButton as="a" href="#projects" wrapperClassName="w-full sm:w-auto" className="group relative inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl bg-indigo-600 text-white font-semibold text-base sm:text-lg overflow-hidden transition-shadow hover:shadow-lg hover:shadow-indigo-500/25">
             <span className="absolute inset-0 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative flex items-center gap-2">
               View Projects
@@ -248,6 +248,7 @@ export default function Hero() {
           <MagneticButton
             as="a"
             href="/PintuKumarCV.pdf"
+            wrapperClassName="w-full sm:w-auto"
             onClick={() => {
               fetch("/api/resume/track", {
                 method: "POST",
@@ -255,7 +256,7 @@ export default function Hero() {
                 body: JSON.stringify({ action: "download" }),
               }).catch(() => {});
             }}
-            className="group inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl border border-slate-600 text-slate-300 font-semibold text-base sm:text-lg hover:border-indigo-500/50 hover:text-white hover:bg-indigo-500/10 transition-all duration-300"
+            className="group inline-flex items-center justify-center gap-2 w-full px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl border border-slate-600 text-slate-300 font-semibold text-base sm:text-lg hover:border-indigo-500/50 hover:text-white hover:bg-indigo-500/10 transition-all duration-300"
           >
             <FileDown className="w-5 h-5 group-hover:animate-bounce" />
             Download Resume

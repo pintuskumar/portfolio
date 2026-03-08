@@ -333,6 +333,11 @@ body {
   color: #f9fafb;
   font-family: var(--font-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  max-width: 100vw;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 /* Custom cursor only when JS has loaded (class added by CustomCursor) */
