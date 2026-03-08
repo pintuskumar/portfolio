@@ -26,11 +26,11 @@ export async function POST(
       req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       req.headers.get("x-real-ip") ||
       "127.0.0.1";
+    // Atomic deduplication — setnx returns true only if key was newly set
     const dedupeKey = `views-seen:${slug}:${ip}`;
-    const alreadyCounted = await redis.get(dedupeKey);
+    const isNew = await redis.set(dedupeKey, 1, { ex: 86400, nx: true });
 
-    if (!alreadyCounted) {
-      await redis.set(dedupeKey, 1, { ex: 86400 }); // 24h expiry
+    if (isNew) {
       await redis.incr(`views:${slug}`);
     }
 

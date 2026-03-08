@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 
-const redis = new Redis({
-  url: process.env.UPSTASH_REDIS_REST_URL!,
-  token: process.env.UPSTASH_REDIS_REST_TOKEN!,
-});
+const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
+const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN;
+
+const redis = redisUrl && redisToken
+  ? new Redis({ url: redisUrl, token: redisToken })
+  : null;
 
 const RATE_LIMITS: Record<string, { max: number; windowSeconds: number }> = {
   "/api/chat": { max: 20, windowSeconds: 3600 },
@@ -46,6 +48,8 @@ export async function proxy(req: NextRequest) {
   const routeSegments = pathname.split("/").slice(0, 3); // e.g. ["", "api", "chat"]
   const routeKey = routeSegments.join("/");
   const redisKey = `ratelimit:${routeKey}:${ip}`;
+
+  if (!redis) return NextResponse.next();
 
   try {
     const current = await redis.incr(redisKey);

@@ -72,19 +72,23 @@ export default function ChatWidget() {
       const assistantMsg = createMessage("assistant", "");
       setMessages((prev) => [...prev, assistantMsg]);
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
 
-        assistantContent += decoder.decode(value, { stream: true });
-        setMessages((prev) => {
-          const updated = [...prev];
-          updated[updated.length - 1] = {
-            ...updated[updated.length - 1],
-            content: assistantContent,
-          };
-          return updated;
-        });
+          assistantContent += decoder.decode(value, { stream: true });
+          setMessages((prev) => {
+            const updated = [...prev];
+            updated[updated.length - 1] = {
+              ...updated[updated.length - 1],
+              content: assistantContent,
+            };
+            return updated;
+          });
+        }
+      } finally {
+        reader.releaseLock();
       }
     } catch {
       setMessages((prev) => [

@@ -23,8 +23,10 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
     initialized = true;
 
     // Track section visibility
-    let observer: IntersectionObserver;
+    let observer: IntersectionObserver | null = null;
+    let cancelled = false;
     const timeoutId = setTimeout(() => {
+      if (cancelled) return;
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -37,10 +39,11 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
         },
         { threshold: 0.5 }
       );
-      document.querySelectorAll("section[id]").forEach((el) => observer.observe(el));
+      document.querySelectorAll("section[id]").forEach((el) => observer!.observe(el));
     }, 1000);
 
     return () => {
+      cancelled = true;
       clearTimeout(timeoutId);
       observer?.disconnect();
     };

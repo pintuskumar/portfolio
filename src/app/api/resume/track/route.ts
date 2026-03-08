@@ -8,7 +8,17 @@ export async function POST(request: NextRequest) {
       request.headers.get("x-real-ip") ||
       "unknown";
 
-    const { action } = await request.json();
+    let body;
+    try {
+      body = await request.json();
+    } catch {
+      return NextResponse.json(
+        { success: false, error: "Invalid JSON" },
+        { status: 400 }
+      );
+    }
+
+    const { action } = body;
 
     if (action !== "view" && action !== "download") {
       return NextResponse.json(
@@ -17,15 +27,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Use setnx for atomic deduplication — only count unique if key doesn't exist
+    const dedupeKey = `resume:${action}:${ip}`;
+    const isNew = await redis.set(dedupeKey, "1", { ex: 86400, nx: true });
+
     const total = await redis.incr(`resume:${action}:total`);
 
-    const dedupeKey = `resume:${action}:${ip}`;
-    const alreadyCounted = await redis.get(dedupeKey);
-
     let unique: number;
-
-    if (!alreadyCounted) {
-      await redis.set(dedupeKey, "1", { ex: 86400 });
+    if (isNew) {
       unique = await redis.incr(`resume:${action}:unique`);
     } else {
       unique = Number((await redis.get(`resume:${action}:unique`)) || 0);

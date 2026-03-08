@@ -116,7 +116,7 @@ export async function POST(req: NextRequest) {
           </div>
           <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 16px 0;" />
           <p style="font-size: 12px; color: #999;">
-            Sent from portfolio contact form &bull; IP: ${ip}
+            Sent from portfolio contact form &bull; IP: ${escapeHtml(ip)}
           </p>
         </div>
       `,

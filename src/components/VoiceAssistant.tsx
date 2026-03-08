@@ -70,16 +70,24 @@ export default function VoiceAssistant() {
 
       if (data.audioAvailable && data.audio) {
         setState("playing");
-        const audioBytes = Uint8Array.from(atob(data.audio), (c) => c.charCodeAt(0));
-        const blob = new Blob([audioBytes], { type: "audio/mpeg" });
-        const url = URL.createObjectURL(blob);
-        const audio = new Audio(url);
-        audioRef.current = audio;
-        audio.onended = () => {
+        try {
+          const audioBytes = Uint8Array.from(atob(data.audio), (c) => c.charCodeAt(0));
+          const blob = new Blob([audioBytes], { type: "audio/mpeg" });
+          const url = URL.createObjectURL(blob);
+          const audio = new Audio(url);
+          audioRef.current = audio;
+          audio.onended = () => {
+            setState("idle");
+            URL.revokeObjectURL(url);
+          };
+          audio.onerror = () => {
+            setState("idle");
+            URL.revokeObjectURL(url);
+          };
+          await audio.play();
+        } catch {
           setState("idle");
-          URL.revokeObjectURL(url);
-        };
-        audio.play();
+        }
       } else {
         setState("idle");
       }

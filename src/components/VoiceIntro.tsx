@@ -24,9 +24,14 @@ export default function VoiceIntro() {
     try {
       // If we already have the audio loaded, just replay
       if (audioRef.current?.src) {
-        audioRef.current.currentTime = 0;
-        await audioRef.current.play();
-        setState("playing");
+        try {
+          audioRef.current.currentTime = 0;
+          await audioRef.current.play();
+          setState("playing");
+        } catch {
+          setState("error");
+          setTimeout(() => setState("idle"), 3000);
+        }
         return;
       }
 

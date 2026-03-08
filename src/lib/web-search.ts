@@ -1,4 +1,8 @@
 export async function searchWeb(query: string): Promise<string> {
+  // Sanitize query
+  if (!query || query.length > 500) return "";
+  const sanitized = query.trim().slice(0, 500);
+
   // Try Tavily first
   const tavilyKey = process.env.TAVILY_API_KEY;
   if (tavilyKey) {
@@ -9,7 +13,7 @@ export async function searchWeb(query: string): Promise<string> {
       const response = await fetch("https://api.tavily.com/search", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query, max_results: 3, search_depth: "basic" }),
+        body: JSON.stringify({ query: sanitized, max_results: 3, search_depth: "basic" }),
         signal: controller.signal,
       });
 
@@ -40,7 +44,7 @@ export async function searchWeb(query: string): Promise<string> {
           "Content-Type": "application/json",
           "X-API-KEY": serperKey,
         },
-        body: JSON.stringify({ q: query, num: 3 }),
+        body: JSON.stringify({ q: sanitized, num: 3 }),
         signal: controller.signal,
       });
 
