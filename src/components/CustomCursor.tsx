@@ -57,7 +57,7 @@ export default function CustomCursor() {
       {/* Outer ring */}
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none fixed top-0 left-0 z-[9999] hidden md:block"
+        className="pointer-events-none fixed top-0 left-0 z-[9995] hidden md:block"
         style={{
           x: smoothX,
           y: smoothY,
@@ -78,7 +78,7 @@ export default function CustomCursor() {
       {/* Inner dot */}
       <motion.div
         aria-hidden="true"
-        className="pointer-events-none fixed top-0 left-0 z-[9999] hidden md:block"
+        className="pointer-events-none fixed top-0 left-0 z-[9995] hidden md:block"
         style={{
           x: cursorX,
           y: cursorY,
