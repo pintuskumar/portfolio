@@ -495,3 +495,18 @@ html.light .glass-card {
   border: 1px solid rgba(0, 0, 0, 0.06);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
 }
+
+/* Light mode: project reel cards */
+html.light .bg-gray-900\/80 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Light mode: project card inner content */
+html.light .bg-gray-900\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Light mode: navbar mobile slide-in panel */
+html.light .bg-gray-950\/95 {
+  background-color: rgba(248, 250, 252, 0.97) !important;
+}

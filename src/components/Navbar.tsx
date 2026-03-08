@@ -192,7 +192,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm md:hidden"
               onClick={() => setIsOpen(false)}
             />
 
@@ -202,7 +202,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 250 }}
-              className="fixed right-0 top-0 z-40 flex h-full w-[calc(100vw-4rem)] sm:w-72 flex-col bg-gray-950/95 backdrop-blur-2xl border-l border-white/10 md:hidden"
+              className="fixed right-0 top-0 z-[70] flex h-full w-[calc(100vw-4rem)] sm:w-72 flex-col bg-gray-950/95 backdrop-blur-2xl border-l border-white/10 md:hidden"
             >
               {/* Spacer for navbar height */}
               <div className="h-16" />
