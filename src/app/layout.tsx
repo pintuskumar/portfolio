@@ -23,35 +23,61 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://pintukumar.dev";
+
 export const metadata: Metadata = {
-  title: "Pintu Kumar | Full Stack Software Developer",
+  title: {
+    default: "Pintu Kumar | Full Stack Software Developer",
+    template: "%s | Pintu Kumar",
+  },
   description:
     "Portfolio of Pintu Kumar - Full Stack Software Developer specializing in React, Node.js, TypeScript, and cloud technologies. 3+ years of experience building scalable web applications.",
   keywords: [
     "Pintu Kumar",
     "Full Stack Developer",
-    "React",
-    "Node.js",
+    "Software Engineer",
+    "React Developer",
+    "Node.js Developer",
     "TypeScript",
     "Next.js",
     "Portfolio",
+    "Web Developer India",
+    "Cloud Technologies",
+    "Frontend Developer",
+    "Backend Developer",
   ],
-  authors: [{ name: "Pintu Kumar" }],
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://pintukumar.dev"
-  ),
+  authors: [{ name: "Pintu Kumar", url: siteUrl }],
+  creator: "Pintu Kumar",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Pintu Kumar | Full Stack Software Developer",
     description:
-      "Full Stack Software Developer specializing in React, Node.js, and cloud technologies.",
+      "Full Stack Software Developer with 3+ years of experience specializing in React, Node.js, TypeScript, and cloud technologies. Building scalable web applications across healthcare, logistics, and e-commerce.",
     type: "website",
     siteName: "Pintu Kumar Portfolio",
+    url: siteUrl,
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Pintu Kumar | Full Stack Software Developer",
     description:
       "Full Stack Software Developer specializing in React, Node.js, and cloud technologies.",
+    creator: "@pintukumar",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   manifest: "/manifest.webmanifest",
 };
