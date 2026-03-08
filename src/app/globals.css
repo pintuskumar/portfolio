@@ -1,0 +1,497 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #030712;
+  --color-foreground: #f9fafb;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4b5563 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #4b5563;
+  border-radius: 3px;
+}
+
+html {
+  scroll-padding-top: 80px;
+}
+
+/* Lenis handles smooth scrolling now */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ====================== */
+/* Dark theme (default)   */
+/* ====================== */
+html.dark body {
+  background: #030712;
+  color: #f9fafb;
+}
+
+/* ====================== */
+/* Light theme            */
+/* ====================== */
+html.light body {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+html.light section {
+  background: transparent !important;
+}
+
+html.light .bg-gray-950 {
+  background-color: #f8fafc !important;
+}
+
+html.light .bg-gray-900\/90,
+html.light .bg-gray-900\/70,
+html.light .bg-gray-900\/95 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+html.light .bg-zinc-900\/90,
+html.light .bg-zinc-900\/70 {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+html.light .bg-gray-950\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-gray-400,
+html.light .text-gray-300 {
+  color: #475569 !important;
+}
+
+html.light .text-gray-500 {
+  color: #64748b !important;
+}
+
+html.light .text-gray-600 {
+  color: #94a3b8 !important;
+}
+
+html.light .text-slate-400 {
+  color: #475569 !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-zinc-400 {
+  color: #475569 !important;
+}
+
+html.light .border-white\/10,
+html.light .border-white\/5 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .border-gray-800,
+html.light .border-gray-800\/60 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .border-slate-600,
+html.light .border-slate-700 {
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+html.light .bg-white\/5,
+html.light .bg-white\/\[0\.02\] {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+html.light .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .ring-white\/10,
+html.light .ring-white\/20 {
+  --tw-ring-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .shadow-black\/20,
+html.light .shadow-black\/40 {
+  --tw-shadow-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light nav {
+  background-color: rgba(248, 250, 252, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+html.light .bg-gradient-to-b.from-zinc-950,
+html.light .bg-gradient-to-br.from-gray-950,
+html.light .bg-gradient-to-br.from-slate-950 {
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0, #f1f5f9) !important;
+}
+
+/* Light mode: gradient text must stay visible */
+html.light .bg-clip-text.text-transparent {
+  color: transparent !important;
+}
+
+/* Light mode: project titles, section headings */
+html.light .from-white.via-blue-100.to-purple-200 {
+  --tw-gradient-from: #1e293b !important;
+  --tw-gradient-via: #3b82f6 !important;
+  --tw-gradient-to: #7c3aed !important;
+}
+
+/* Light mode: card backgrounds */
+html.light .bg-gray-800\/60 {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .border-gray-700 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Light mode: indigo/purple accent backgrounds */
+html.light .bg-indigo-500\/5,
+html.light .bg-indigo-500\/10,
+html.light .bg-purple-500\/10,
+html.light .bg-purple-500\/5 {
+  background-color: rgba(99, 102, 241, 0.08) !important;
+}
+
+/* Light mode: green accent */
+html.light .bg-green-500\/10 {
+  background-color: rgba(34, 197, 94, 0.08) !important;
+}
+
+/* Light mode: experience/education card bg */
+html.light .bg-gray-900\/70 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Light mode: text-indigo and text-purple should stay colored */
+html.light .text-indigo-400,
+html.light .text-indigo-300,
+html.light .text-purple-400,
+html.light .text-cyan-400,
+html.light .text-cyan-300,
+html.light .text-blue-400,
+html.light .text-green-400,
+html.light .text-amber-400 {
+  /* Keep accent colors as-is in light mode */
+}
+
+/* Light mode: nav text */
+html.light .text-gray-300 {
+  color: #334155 !important;
+}
+
+/* Light mode: hero section bg */
+html.light .from-slate-950.via-slate-900.to-indigo-950 {
+  background: linear-gradient(135deg, #eef2ff, #e0e7ff, #eef2ff) !important;
+}
+
+/* Light mode: slate text */
+html.light .text-slate-500 {
+  color: #64748b !important;
+}
+
+/* Theme transition */
+html {
+  transition: background-color 0.3s ease;
+}
+
+html body,
+html section,
+html nav,
+html footer {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  background: #030712;
+  color: #f9fafb;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Show default cursor on touch devices */
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* Restore cursor for interactive elements on mobile */
+a, button, input, textarea, select, [role="button"] {
+  cursor: none;
+}
+
+@media (pointer: coarse) {
+  a, button, input, textarea, select, [role="button"] {
+    cursor: auto;
+  }
+}
+
+::selection {
+  background-color: rgba(139, 92, 246, 0.3);
+  color: #fff;
+}
+
+html.light ::selection {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #0f172a;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+html.light body::before {
+  opacity: 0.03;
+}
+
+/* Smooth page load animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+body {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Gradient text animation */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient-text {
+  background-size: 200% auto;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Glass morphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+html.light .glass {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Chat widget light mode */
+html.light .chat-widget {
+  background-color: rgba(255, 255, 255, 0.97) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+}
+
+html.light .chat-header {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  background: linear-gradient(to right, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.08)) !important;
+}
+
+html.light .chat-widget .text-white {
+  color: #0f172a !important;
+}
+
+html.light .chat-widget .text-gray-300 {
+  color: #475569 !important;
+}
+
+html.light .chat-widget .text-gray-400 {
+  color: #64748b !important;
+}
+
+html.light .chat-widget .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+html.light .chat-widget .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .chat-widget .bg-indigo-600\/30 {
+  background-color: rgba(99, 102, 241, 0.15) !important;
+}
+
+html.light .chat-widget .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .chat-input {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+  color: #0f172a !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .chat-widget .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .chat-widget .hover\:text-white:hover {
+  color: #0f172a !important;
+}
+
+/* ====================== */
+/* Animated gradient border */
+/* ====================== */
+@keyframes border-rotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+.animated-border {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent 40%,
+    rgba(99, 102, 241, 0.4),
+    rgba(139, 92, 246, 0.4),
+    rgba(236, 72, 153, 0.3),
+    transparent 60%
+  );
+  animation: border-rotate 4s linear infinite;
+  z-index: -1;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* ====================== */
+/* Neon glow accents       */
+/* ====================== */
+.neon-glow {
+  text-shadow:
+    0 0 7px rgba(99, 102, 241, 0.3),
+    0 0 20px rgba(99, 102, 241, 0.15),
+    0 0 40px rgba(99, 102, 241, 0.08);
+}
+
+.neon-glow-purple {
+  text-shadow:
+    0 0 7px rgba(139, 92, 246, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.15),
+    0 0 40px rgba(139, 92, 246, 0.08);
+}
+
+.neon-box-glow {
+  box-shadow:
+    0 0 15px rgba(99, 102, 241, 0.1),
+    0 0 30px rgba(99, 102, 241, 0.05),
+    inset 0 0 15px rgba(99, 102, 241, 0.03);
+}
+
+html.light .neon-glow,
+html.light .neon-glow-purple {
+  text-shadow: none;
+}
+
+html.light .neon-box-glow {
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
+}
+
+/* ====================== */
+/* Breathing background    */
+/* ====================== */
+@keyframes breathe {
+  0%, 100% {
+    opacity: 0.04;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.08;
+    transform: scale(1.15);
+  }
+}
+
+.breathing-orb {
+  animation: breathe 8s ease-in-out infinite;
+}
+
+.breathing-orb-slow {
+  animation: breathe 12s ease-in-out infinite;
+}
+
+.breathing-orb-fast {
+  animation: breathe 6s ease-in-out infinite;
+}
+
+/* ====================== */
+/* Glassmorphism card      */
+/* ====================== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
