@@ -602,3 +602,37 @@ html.light .glass-card {
 html.light .bg-gray-900\/95 {
   background-color: rgba(255, 255, 255, 0.95) !important;
 }
+
+/* Light mode: Experience current company card gradient */
+html.light .from-gray-900\/90,
+html.light .via-gray-900\/80,
+html.light .to-purple-950\/40 {
+  --tw-gradient-from: rgba(255, 255, 255, 0.95) !important;
+  --tw-gradient-via: rgba(255, 255, 255, 0.9) !important;
+  --tw-gradient-to: rgba(139, 92, 246, 0.06) !important;
+}
+
+/* Light mode: Experience cards bg */
+html.light .bg-gray-900\/70 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Light mode: gray-800 borders in experience cards */
+html.light .border-gray-800 {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Light mode: tech tag backgrounds in experience/case studies */
+html.light .bg-gray-800\/60 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Light mode: bg-gray-950 in timeline dots */
+html.light .bg-gray-950 {
+  background-color: #f8fafc !important;
+}
+
+/* Light mode: case study and architecture card backgrounds */
+html.light .bg-white\/\[0\.03\] {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}

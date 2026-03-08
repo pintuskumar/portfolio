@@ -102,8 +102,9 @@ export default function Hero() {
   });
 
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
+  // Delay fade-out so bottom content (Currently Working On) stays visible longer
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const contentY = useTransform(scrollYProgress, [0, 0.7], [0, -30]);
 
   return (
     <section
@@ -290,28 +291,28 @@ export default function Hero() {
           ))}
         </motion.div>
 
-        {/* Currently Working On */}
+      </motion.div>
+
+      {/* Currently Working On — outside parallax so it doesn't fade on scroll */}
+      <div className="relative z-10 max-w-lg mx-auto px-6 mt-8 pb-24 text-center">
         <motion.div
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          custom={1.8}
-          className="mt-12 max-w-lg mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.8, duration: 0.6 }}
         >
           <CurrentlyWorkingOn />
         </motion.div>
 
         {/* Visitor counter */}
         <motion.div
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-          custom={2.0}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2.0, duration: 0.6 }}
           className="mt-6 flex justify-center"
         >
           <VisitorCounter />
         </motion.div>
-      </motion.div>
+      </div>
 
       {/* Scroll indicator */}
       <motion.div
