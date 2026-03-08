@@ -110,7 +110,7 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden overflow-x-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950"
     >
       {/* 3D Particle field background */}
       <Suspense fallback={null}>

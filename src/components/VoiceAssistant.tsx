@@ -19,8 +19,30 @@ export default function VoiceAssistant() {
   const startRecording = useCallback(async () => {
     try {
       setErrorMsg("");
+
+      // Check if getUserMedia is available (requires HTTPS or localhost)
+      if (!navigator.mediaDevices?.getUserMedia) {
+        setErrorMsg("Microphone not available (requires HTTPS)");
+        setState("error");
+        setTimeout(() => setState("idle"), 3000);
+        return;
+      }
+
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const recorder = new MediaRecorder(stream, { mimeType: "audio/webm" });
+
+      // Find a supported mimeType
+      const mimeType = MediaRecorder.isTypeSupported("audio/webm;codecs=opus")
+        ? "audio/webm;codecs=opus"
+        : MediaRecorder.isTypeSupported("audio/webm")
+        ? "audio/webm"
+        : MediaRecorder.isTypeSupported("audio/mp4")
+        ? "audio/mp4"
+        : undefined;
+
+      const recorder = mimeType
+        ? new MediaRecorder(stream, { mimeType })
+        : new MediaRecorder(stream);
+
       audioChunks.current = [];
 
       recorder.ondataavailable = (e) => {
@@ -29,16 +51,22 @@ export default function VoiceAssistant() {
 
       recorder.onstop = async () => {
         stream.getTracks().forEach((t) => t.stop());
-        const audioBlob = new Blob(audioChunks.current, { type: "audio/webm" });
+        const audioBlob = new Blob(audioChunks.current, {
+          type: recorder.mimeType || "audio/webm",
+        });
         await processAudio(audioBlob);
       };
 
       recorder.start();
       mediaRecorder.current = recorder;
       setState("recording");
-    } catch {
-      setErrorMsg("Microphone access denied");
+    } catch (err) {
+      const msg = err instanceof DOMException && err.name === "NotAllowedError"
+        ? "Microphone access denied. Please allow microphone in browser settings."
+        : "Could not access microphone";
+      setErrorMsg(msg);
       setState("error");
+      setTimeout(() => setState("idle"), 4000);
     }
   }, []);
 
