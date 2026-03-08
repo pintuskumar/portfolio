@@ -2,15 +2,22 @@ import nodemailer from "nodemailer";
 import { NextRequest, NextResponse } from "next/server";
 import { rateLimit } from "../../../lib/rate-limit";
 
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT) || 587,
-  secure: process.env.SMTP_SECURE === "true",
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+let transporter: nodemailer.Transporter | null = null;
+
+function getTransporter() {
+  if (!transporter) {
+    transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT) || 587,
+      secure: process.env.SMTP_SECURE === "true",
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+  }
+  return transporter;
+}
 
 function escapeHtml(str: string): string {
   return str
@@ -49,7 +56,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    await transporter.sendMail({
+    await getTransporter().sendMail({
       from: process.env.SMTP_FROM_EMAIL,
       to: "pksharmagh4@gmail.com",
       replyTo: email,

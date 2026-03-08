@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { redis } from "../../../lib/redis";
 
-const INTRO_TEXT = `Hi there! I'm Pintu Kumar, a Full Stack Software Engineer with over 3 years of experience. I specialize in React, Node.js, TypeScript, and cloud technologies. Feel free to explore my portfolio and reach out if you'd like to collaborate!`;
+const INTRO_TEXT = `Hi there! I'm Pintu Kumar, a Full Stack Software Developer with over 3 years of experience. I specialize in React, Node.js, TypeScript, and cloud technologies. Feel free to explore my portfolio and reach out if you'd like to collaborate!`;
 
 const CACHE_KEY = "voice-intro:audio";
 const CACHE_TTL = 86400; // 24 hours

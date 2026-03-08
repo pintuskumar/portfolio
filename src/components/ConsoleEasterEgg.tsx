@@ -8,7 +8,7 @@ const ASCII_ART = `
 ║   🚀  Hey there, fellow developer!  🚀   ║
 ║                                          ║
 ║   I'm Pintu Kumar                        ║
-║   Full Stack Software Engineer           ║
+║   Full Stack Software Developer           ║
 ║                                          ║
 ║   Curious about the code?                ║
 ║   Check it out on GitHub:                ║

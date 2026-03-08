@@ -10,7 +10,7 @@ import CurrentlyWorkingOn from "./CurrentlyWorkingOn";
 const ParticleField = lazy(() => import("./ParticleField"));
 
 const name = "Pintu Kumar";
-const roles = ["Full Stack Software Engineer", "Backend Developer", "Frontend Architect", "Cloud Enthusiast"];
+const roles = ["Full Stack Software Developer", "Backend Developer", "Frontend Architect", "Cloud Enthusiast"];
 const tagline = "Building scalable web applications with modern technologies";
 
 const socialLinks = [
@@ -139,11 +139,11 @@ export default function Hero() {
         >
           <div className="relative mx-auto h-24 w-24 sm:h-28 sm:w-28">
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 p-[2px]">
-              <div className="flex h-full w-full items-center justify-center rounded-full bg-slate-900 text-3xl sm:text-4xl font-bold">
-                <span className="bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent">
-                  PK
-                </span>
-              </div>
+              <img
+                src="/photo.jpg"
+                alt="Pintu Kumar"
+                className="h-full w-full rounded-full object-cover"
+              />
             </div>
             <span className="absolute bottom-1 right-1 flex h-4 w-4">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />

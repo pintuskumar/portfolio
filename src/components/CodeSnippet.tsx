@@ -13,7 +13,7 @@ const CODE_LINES = [
   { text: ",", color: "#d4d4d4" },
   { text: "", color: "" },
   { text: "  role: ", color: "#9cdcfe" },
-  { text: '"Full Stack Engineer"', color: "#ce9178" },
+  { text: '"Full Stack Developer"', color: "#ce9178" },
   { text: ",", color: "#d4d4d4" },
   { text: "", color: "" },
   { text: "  skills: ", color: "#9cdcfe" },

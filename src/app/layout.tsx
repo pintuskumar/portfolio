@@ -24,9 +24,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pintu Kumar | Full Stack Software Engineer",
+  title: "Pintu Kumar | Full Stack Software Developer",
   description:
-    "Portfolio of Pintu Kumar - Full Stack Software Engineer specializing in React, Node.js, TypeScript, and cloud technologies. 3+ years of experience building scalable web applications.",
+    "Portfolio of Pintu Kumar - Full Stack Software Developer specializing in React, Node.js, TypeScript, and cloud technologies. 3+ years of experience building scalable web applications.",
   keywords: [
     "Pintu Kumar",
     "Full Stack Developer",
@@ -41,17 +41,17 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || "https://pintukumar.dev"
   ),
   openGraph: {
-    title: "Pintu Kumar | Full Stack Software Engineer",
+    title: "Pintu Kumar | Full Stack Software Developer",
     description:
-      "Full Stack Software Engineer specializing in React, Node.js, and cloud technologies.",
+      "Full Stack Software Developer specializing in React, Node.js, and cloud technologies.",
     type: "website",
     siteName: "Pintu Kumar Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pintu Kumar | Full Stack Software Engineer",
+    title: "Pintu Kumar | Full Stack Software Developer",
     description:
-      "Full Stack Software Engineer specializing in React, Node.js, and cloud technologies.",
+      "Full Stack Software Developer specializing in React, Node.js, and cloud technologies.",
   },
   manifest: "/manifest.webmanifest",
 };

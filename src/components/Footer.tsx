@@ -43,7 +43,7 @@ export default function Footer() {
                 Pintu Kumar
               </a>
               <p className="mt-1 text-sm text-gray-500">
-                Full Stack Software Engineer
+                Full Stack Software Developer
               </p>
             </div>
 
@@ -68,14 +68,6 @@ export default function Footer() {
 
           {/* Divider */}
           <div className="my-8 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
-
-          {/* Bottom row */}
-          <div className="flex flex-col items-center gap-4 text-center text-sm md:flex-row md:justify-between">
-            <p>&copy; {new Date().getFullYear()} Pintu Kumar. All rights reserved.</p>
-            <p className="flex items-center gap-1 text-gray-500">
-              Built with Next.js, Tailwind CSS, GSAP &amp; Three.js
-            </p>
-          </div>
         </div>
       </motion.footer>
 

@@ -3,7 +3,7 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Person",
     name: "Pintu Kumar",
-    jobTitle: "Full Stack Software Engineer",
+    jobTitle: "Full Stack Software Developer",
     url: "https://pintukumar.dev",
     email: "pksharmagh4@gmail.com",
     sameAs: [
@@ -37,7 +37,7 @@ export default function JsonLd() {
     name: "Pintu Kumar Portfolio",
     url: "https://pintukumar.dev",
     description:
-      "Portfolio of Pintu Kumar - Full Stack Software Engineer specializing in React, Node.js, TypeScript, and cloud technologies.",
+      "Portfolio of Pintu Kumar - Full Stack Software Developer specializing in React, Node.js, TypeScript, and cloud technologies.",
   };
 
   return (

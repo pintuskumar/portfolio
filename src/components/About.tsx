@@ -120,7 +120,7 @@ export default function About() {
             className="max-w-3xl text-center text-lg leading-relaxed text-zinc-400 sm:text-xl"
             stagger={0.03}
           >
-            I&apos;m Pintu Kumar, a passionate Full Stack Developer with 3+ years of experience specializing in React, Node.js, and cloud technologies. With experience across healthcare, logistics, e-commerce, and security domains, I build performant, scalable applications that solve real-world problems.
+            Full Stack Developer with 3+ years of experience building scalable web applications using React, TypeScript, Node.js, and PostgreSQL. Skilled in API design, secure authentication (OAuth 2.0/JWT), cloud deployment, and performance optimization for production systems across healthcare, logistics, e-commerce, and security domains.
           </TextReveal>
 
           {/* Animated code snippet */}
