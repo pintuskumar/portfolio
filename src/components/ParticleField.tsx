@@ -4,7 +4,7 @@ import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-function Particles({ count = 500 }) {
+function Particles({ count = 300 }) {
   const mesh = useRef<THREE.Points>(null!);
 
   const [positions, velocities] = useMemo(() => {
@@ -40,7 +40,6 @@ function Particles({ count = 500 }) {
       arr[i * 3 + 1] += velocities[i * 3 + 1];
       arr[i * 3 + 2] += velocities[i * 3 + 2];
 
-      // Wrap around
       if (Math.abs(arr[i * 3]) > 10) velocities[i * 3] *= -1;
       if (Math.abs(arr[i * 3 + 1]) > 10) velocities[i * 3 + 1] *= -1;
       if (Math.abs(arr[i * 3 + 2]) > 5) velocities[i * 3 + 2] *= -1;
@@ -54,14 +53,8 @@ function Particles({ count = 500 }) {
   return (
     <points ref={mesh}>
       <bufferGeometry>
-        <bufferAttribute
-          attach="attributes-position"
-          args={[positions, 3]}
-        />
-        <bufferAttribute
-          attach="attributes-size"
-          args={[sizes, 1]}
-        />
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+        <bufferAttribute attach="attributes-size" args={[sizes, 1]} />
       </bufferGeometry>
       <pointsMaterial
         size={0.03}
@@ -83,19 +76,16 @@ function FloatingGeometry() {
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
-
     if (torusRef.current) {
       torusRef.current.rotation.x = t * 0.3;
       torusRef.current.rotation.y = t * 0.2;
       torusRef.current.position.y = Math.sin(t * 0.5) * 0.5;
     }
-
     if (icoRef.current) {
       icoRef.current.rotation.x = t * 0.2;
       icoRef.current.rotation.z = t * 0.3;
       icoRef.current.position.y = Math.cos(t * 0.4) * 0.3 + 1;
     }
-
     if (octaRef.current) {
       octaRef.current.rotation.y = t * 0.4;
       octaRef.current.rotation.z = t * 0.2;
@@ -122,12 +112,25 @@ function FloatingGeometry() {
 }
 
 export default function ParticleField() {
-  const [count, setCount] = useState(400);
+  const [shouldRender, setShouldRender] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
-    if (window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768) {
-      setCount(150);
+    const mobile = window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768;
+    setIsMobile(mobile);
+
+    // Defer 3D rendering to after LCP — wait for idle callback or 2s timeout
+    if ("requestIdleCallback" in window) {
+      const id = requestIdleCallback(() => setShouldRender(true), { timeout: 2000 });
+      return () => cancelIdleCallback(id);
+    } else {
+      const timeout = setTimeout(() => setShouldRender(true), 1000);
+      return () => clearTimeout(timeout);
     }
   }, []);
+
+  // Skip 3D entirely on mobile for better performance
+  if (!shouldRender || isMobile) return null;
 
   return (
     <div className="absolute inset-0 z-0">
@@ -135,9 +138,9 @@ export default function ParticleField() {
         camera={{ position: [0, 0, 5], fov: 60 }}
         dpr={[1, 1.5]}
         style={{ background: "transparent" }}
-        gl={{ alpha: true, antialias: false }}
+        gl={{ alpha: true, antialias: false, powerPreference: "low-power" }}
       >
-        <Particles count={count} />
+        <Particles count={300} />
         <FloatingGeometry />
       </Canvas>
     </div>
