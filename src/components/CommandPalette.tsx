@@ -4,7 +4,7 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search, Home, User, Code2, Briefcase, FolderOpen, GraduationCap,
-  Mail, Github, Linkedin, ExternalLink, FileDown, X,
+  Mail, Github, Linkedin, ExternalLink, FileDown, X, Sparkles, Loader2,
 } from "lucide-react";
 import { projects } from "../data/portfolio-data";
 import { skills } from "../data/portfolio-data";
@@ -22,8 +22,11 @@ export default function CommandPalette() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [aiAnswer, setAiAnswer] = useState("");
+  const [aiLoading, setAiLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const aiTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const items: CommandItem[] = useMemo(() => [
     // Navigation
@@ -137,9 +140,43 @@ export default function CommandPalette() {
     return () => window.removeEventListener("keydown", handleNav);
   }, [isOpen, selectedIndex, filtered]);
 
-  // Reset selection when query changes
+  // Reset selection when query changes & trigger AI search on "?" prefix
   useEffect(() => {
     setSelectedIndex(0);
+    setAiAnswer("");
+
+    if (aiTimeoutRef.current) clearTimeout(aiTimeoutRef.current);
+
+    // AI search: type "? your question" to ask AI
+    if (query.startsWith("?") && query.length > 2) {
+      aiTimeoutRef.current = setTimeout(async () => {
+        setAiLoading(true);
+        try {
+          const res = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              messages: [{ role: "user", content: query.slice(1).trim() }],
+            }),
+          });
+          if (!res.ok) throw new Error();
+          const reader = res.body?.getReader();
+          if (!reader) throw new Error();
+          const decoder = new TextDecoder();
+          let text = "";
+          while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            text += decoder.decode(value, { stream: true });
+            setAiAnswer(text);
+          }
+        } catch {
+          setAiAnswer("Sorry, could not get an answer right now.");
+        } finally {
+          setAiLoading(false);
+        }
+      }, 500);
+    }
   }, [query]);
 
   // Focus input when opened
@@ -242,6 +279,20 @@ export default function CommandPalette() {
                 )}
               </div>
 
+              {/* AI Answer section */}
+              {(aiLoading || aiAnswer) && (
+                <div className="border-t border-white/10 p-3">
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <Sparkles className="h-3 w-3 text-indigo-400" />
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-indigo-400">AI Answer</span>
+                    {aiLoading && <Loader2 className="h-3 w-3 text-indigo-400 animate-spin" />}
+                  </div>
+                  <p className="text-sm text-gray-300 leading-relaxed">
+                    {aiAnswer || "Thinking..."}
+                  </p>
+                </div>
+              )}
+
               {/* Footer hints */}
               <div className="flex items-center justify-between border-t border-white/5 px-4 py-2 text-[10px] text-gray-600">
                 <div className="flex items-center gap-3">
@@ -253,7 +304,8 @@ export default function CommandPalette() {
                   </span>
                 </div>
                 <span className="flex items-center gap-1">
-                  <kbd className="rounded bg-white/10 px-1 font-mono">⌘K</kbd> toggle
+                  <kbd className="rounded bg-white/10 px-1 font-mono">?</kbd> ask AI
+                  <kbd className="rounded bg-white/10 px-1 font-mono ml-2">⌘K</kbd> toggle
                 </span>
               </div>
             </div>

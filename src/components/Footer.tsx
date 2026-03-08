@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
 import MagneticButton from "./MagneticButton";
+import PerformanceMetrics from "./PerformanceMetrics";
 import { socialLinks as socialData } from "../data/portfolio-data";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string; size?: number }>> = {
@@ -71,6 +72,14 @@ export default function Footer() {
                 </MagneticButton>
               ))}
             </div>
+          </div>
+
+          {/* Performance Metrics */}
+          <div className="my-8">
+            <p className="text-center text-xs text-gray-600 uppercase tracking-wider mb-4">
+              Page Performance
+            </p>
+            <PerformanceMetrics />
           </div>
 
           {/* Divider */}

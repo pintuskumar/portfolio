@@ -22,6 +22,8 @@ const GitHubActivity = dynamic(() => import("../components/GitHubActivity"));
 const Contact = dynamic(() => import("../components/Contact"));
 const Footer = dynamic(() => import("../components/Footer"));
 const ChatWidget = dynamic(() => import("../components/ChatWidget"));
+const VoiceAssistant = dynamic(() => import("../components/VoiceAssistant"));
+const VisitorCounter = dynamic(() => import("../components/VisitorCounter"));
 
 export default function Home() {
   return (
@@ -71,6 +73,9 @@ export default function Home() {
           </Suspense>
           <Suspense fallback={null}>
             <ChatWidget />
+          </Suspense>
+          <Suspense fallback={null}>
+            <VoiceAssistant />
           </Suspense>
         </main>
       </SmoothScroll>

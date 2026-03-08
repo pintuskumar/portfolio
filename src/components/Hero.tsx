@@ -7,6 +7,7 @@ import { Github, Linkedin, Mail, ChevronDown, ExternalLink, FileDown } from "luc
 import MagneticButton from "./MagneticButton";
 import VoiceIntro from "./VoiceIntro";
 import CurrentlyWorkingOn from "./CurrentlyWorkingOn";
+import VisitorCounter from "./VisitorCounter";
 import { socialLinks as socialData } from "../data/portfolio-data";
 
 const ParticleField = lazy(() => import("./ParticleField"));
@@ -242,7 +243,18 @@ export default function Hero() {
             </span>
           </MagneticButton>
 
-          <MagneticButton as="a" href="/PintuKumarCV.pdf" className="group inline-flex items-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl border border-slate-600 text-slate-300 font-semibold text-base sm:text-lg hover:border-indigo-500/50 hover:text-white hover:bg-indigo-500/10 transition-all duration-300">
+          <MagneticButton
+            as="a"
+            href="/PintuKumarCV.pdf"
+            onClick={() => {
+              fetch("/api/resume/track", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ action: "download" }),
+              }).catch(() => {});
+            }}
+            className="group inline-flex items-center gap-2 px-6 py-3.5 sm:px-8 sm:py-4 rounded-xl border border-slate-600 text-slate-300 font-semibold text-base sm:text-lg hover:border-indigo-500/50 hover:text-white hover:bg-indigo-500/10 transition-all duration-300"
+          >
             <FileDown className="w-5 h-5 group-hover:animate-bounce" />
             Download Resume
           </MagneticButton>
@@ -286,6 +298,17 @@ export default function Hero() {
           className="mt-12 max-w-lg mx-auto"
         >
           <CurrentlyWorkingOn />
+        </motion.div>
+
+        {/* Visitor counter */}
+        <motion.div
+          variants={fadeUpVariants}
+          initial="hidden"
+          animate="visible"
+          custom={2.0}
+          className="mt-6 flex justify-center"
+        >
+          <VisitorCounter />
         </motion.div>
       </motion.div>
 
