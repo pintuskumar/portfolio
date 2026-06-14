@@ -107,6 +107,26 @@ html.light .text-white {
   color: #0f172a !important;
 }
 
+/* Keep white text on colored button/icon backgrounds in light mode */
+html.light .bg-indigo-600.text-white,
+html.light .bg-indigo-600 .text-white,
+html.light .bg-indigo-500.text-white,
+html.light .bg-indigo-500 .text-white,
+html.light .from-indigo-600.text-white,
+html.light .from-indigo-600 .text-white,
+html.light .from-purple-600.text-white,
+html.light .from-purple-600 .text-white,
+html.light .from-emerald-600.text-white,
+html.light .from-emerald-600 .text-white,
+html.light .bg-emerald-600 .text-white,
+html.light .bg-red-500 .text-white,
+html.light .bg-yellow-500 .text-white,
+html.light .bg-green-500 .text-white,
+html.light .from-blue-600 .text-white,
+html.light .bg-blue-600 .text-white {
+  color: #ffffff !important;
+}
+
 html.light .text-gray-300,
 html.light .text-gray-400,
 html.light .text-slate-300,
@@ -121,7 +141,7 @@ html.light .text-slate-500 {
 }
 
 html.light .text-gray-600 {
-  color: #94a3b8 !important;
+  color: #64748b !important;
 }
 
 /* Keep accent colors visible */
@@ -192,6 +212,20 @@ html.light .from-gray-950.to-transparent {
   --tw-gradient-from: #f8fafc !important;
 }
 
+/* --- TechMarquee: color dots — ensure visibility on light bg --- */
+html.light section.bg-gray-950 .rounded-full.shrink-0 {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* --- Missing text color: text-indigo-300 (Hero greeting badge) --- */
+html.light .text-indigo-300 {
+  color: #4338ca !important;
+}
+
+html.light .text-indigo-200 {
+  color: #4338ca !important;
+}
+
 /* --- GitHub Heatmap --- */
 html.light .bg-gray-800\/50 {
   background-color: rgba(0, 0, 0, 0.06) !important;
@@ -209,15 +243,8 @@ html.light .bg-emerald-500\/80 {
   background-color: rgba(16, 185, 129, 0.6) !important;
 }
 
-/* --- CodeSnippet window --- */
-html.light .bg-\[\#1e1e1e\] {
-  background-color: #ffffff !important;
-  border: 1px solid rgba(0, 0, 0, 0.1) !important;
-}
-
-html.light .bg-\[\#252526\] {
-  background-color: #f8fafc !important;
-}
+/* CodeSnippet: keep dark background in light mode (VS Code theme) */
+/* Do NOT override bg-[#1e1e1e] or bg-[#252526] — the inline syntax colors are designed for dark backgrounds */
 
 /* --- Education/Experience card gradient borders --- */
 html.light .via-gray-800 {
@@ -243,6 +270,13 @@ html.light [role="status"].bg-gray-950 {
 /* Light mode: gradient text must stay visible */
 html.light .bg-clip-text.text-transparent {
   color: transparent !important;
+}
+
+/* Light mode: hero name gradient text (from-white via-white to-indigo-200) */
+html.light .from-white.via-white.to-indigo-200 {
+  --tw-gradient-from: #1e293b !important;
+  --tw-gradient-via: #334155 !important;
+  --tw-gradient-to: #7c3aed !important;
 }
 
 /* Light mode: project titles, section headings */
