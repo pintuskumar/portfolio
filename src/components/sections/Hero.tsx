@@ -171,7 +171,7 @@ export function Hero() {
                   loading="eager"
                   fetchPriority="high"
                   decoding="async"
-                  className="w-full h-full object-cover rounded-[3px]"
+                  className="w-full h-full object-cover object-top rounded-[3px]"
                 />
               </div>
               <div className="absolute -bottom-3 -right-3 font-mono text-[10px] text-muted-foreground bg-card border border-border rounded px-2 py-1 tracking-wider">
