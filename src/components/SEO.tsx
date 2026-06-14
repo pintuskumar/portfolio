@@ -12,8 +12,8 @@ interface SEOProps {
 const SITE_NAME = "Pintu Kumar";
 const DEFAULT_TITLE = "Pintu Kumar — Full Stack Developer & Software Engineer";
 const DEFAULT_DESC =
-  "Portfolio of Pintu Kumar — Full Stack Developer building scalable web applications with React, Node.js, TypeScript, and PostgreSQL. Based in India.";
-const DEFAULT_IMAGE = "/og-image.png";
+  "Portfolio of Pintu Kumar — Full Stack Developer building scalable web applications with React, Node.js, TypeScript, and PostgreSQL. Based in Mumbai, India.";
+const DEFAULT_IMAGE = "/photo.jpg";
 export const SITE_URL = typeof window !== "undefined" ? window.location.origin : "";
 
 export default function SEO({

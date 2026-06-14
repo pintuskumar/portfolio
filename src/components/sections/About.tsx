@@ -39,11 +39,13 @@ function ScrollWord({ word, progress, range }: { word: string; progress: any; ra
   );
 }
 
-function StatCard({ label, value, max, icon, delay }: { label: string; value: number; max: number; icon: string; delay: number }) {
+function StatCard({ label, value, max, icon, delay }: { label: string; value: string | number; max: number; icon: string; delay: number }) {
   const ref = useRef(null);
   const isInView = useMotionInView(ref, { once: true, margin: "-40px" });
-  const count = useCountUp(value, isInView);
-  const percentage = Math.min((value / max) * 100, 100);
+  const numericValue = typeof value === "number" ? value : 0;
+  const count = useCountUp(numericValue, isInView);
+  const percentage = Math.min((numericValue / max) * 100, 100);
+  const isString = typeof value === "string";
 
   return (
     <motion.div
@@ -57,21 +59,23 @@ function StatCard({ label, value, max, icon, delay }: { label: string; value: nu
       <div className="relative w-16 h-16 mb-2">
         <svg className="w-full h-full -rotate-90" viewBox="0 0 64 64">
           <circle cx="32" cy="32" r="28" fill="none" stroke="hsl(var(--border))" strokeWidth="3" />
-          <motion.circle
-            cx="32" cy="32" r="28" fill="none"
-            stroke="hsl(var(--primary))"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeDasharray={`${2 * Math.PI * 28}`}
-            initial={{ strokeDashoffset: 2 * Math.PI * 28 }}
-            animate={isInView ? { strokeDashoffset: 2 * Math.PI * 28 * (1 - percentage / 100) } : {}}
-            transition={{ delay: delay + 0.3, duration: 1.2, ease: "easeOut" }}
-            className="drop-shadow-[0_0_6px_hsl(var(--primary)/0.4)]"
-          />
+          {!isString && (
+            <motion.circle
+              cx="32" cy="32" r="28" fill="none"
+              stroke="hsl(var(--primary))"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeDasharray={`${2 * Math.PI * 28}`}
+              initial={{ strokeDashoffset: 2 * Math.PI * 28 }}
+              animate={isInView ? { strokeDashoffset: 2 * Math.PI * 28 * (1 - percentage / 100) } : {}}
+              transition={{ delay: delay + 0.3, duration: 1.2, ease: "easeOut" }}
+              className="drop-shadow-[0_0_6px_hsl(var(--primary)/0.4)]"
+            />
+          )}
         </svg>
         <span className="absolute inset-0 flex items-center justify-center text-lg">{icon}</span>
       </div>
-      <span className="font-mono text-xl font-bold text-foreground tabular-nums">{count}{label === "connections" ? "+" : ""}</span>
+      <span className="font-mono text-xl font-bold text-foreground tabular-nums">{isString ? value : count}{!isString && label === "connections" ? "+" : ""}</span>
       <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">{label}</span>
     </motion.div>
   );

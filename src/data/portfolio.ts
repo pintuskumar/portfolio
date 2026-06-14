@@ -21,13 +21,13 @@ export const HERO_COMMANDS = [
 
 export const PROFILE = {
   name: "Pintu Kumar",
-  location: "India",
+  location: "Mumbai, Maharashtra, India",
   photo: "/photo.jpg",
   linkedin: "https://linkedin.com/in/pintukumar12",
   github: "https://github.com/pintu544",
   about: "Full Stack Developer with 3+ years of experience building scalable web applications using React, TypeScript, Node.js, and PostgreSQL. Skilled in API design, secure authentication (OAuth 2.0/JWT), cloud deployment, and performance optimization for production systems across healthcare, logistics, e-commerce, and security domains.",
-  followers: 500,
-  connections: 500,
+  followers: "3K",
+  connections: "500+",
   projects: 5,
 };
 
