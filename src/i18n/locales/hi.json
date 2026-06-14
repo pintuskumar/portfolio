@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "about": "परिचय",
+    "skills": "कौशल",
+    "experience": "अनुभव",
+    "achievements": "उपलब्धियाँ",
+    "blog": "ब्लॉग",
+    "projects": "परियोजनाएँ",
+    "contact": "संपर्क",
+    "navigate": "नेविगेट",
+    "toggleTheme": "थीम बदलें",
+    "language": "भाषा"
+  },
+  "hero": {
+    "available": "अवसरों के लिए उपलब्ध",
+    "downloadResume": "रिज़्यूमे डाउनलोड करें",
+    "getInTouch": "संपर्क करें"
+  },
+  "about": {
+    "heading": "परिचय",
+    "subtitle": "# whoami"
+  },
+  "projects": {
+    "heading": "परियोजनाएँ",
+    "subtitle": "# ls -la ~/work",
+    "all": "सभी",
+    "readCaseStudy": "केस स्टडी पढ़ें",
+    "source": "कोड",
+    "live": "लाइव",
+    "clickForDetails": "विवरण के लिए क्लिक करें →",
+    "backToProjects": "परियोजनाओं पर वापस",
+    "problem": "समस्या",
+    "approach": "दृष्टिकोण",
+    "techDecisions": "तकनीकी निर्णय",
+    "outcomes": "परिणाम",
+    "role": "भूमिका",
+    "duration": "अवधि",
+    "screenshots": "स्क्रीनशॉट",
+    "nextProject": "अगली परियोजना",
+    "notFound": "परियोजना नहीं मिली"
+  },
+  "contact": {
+    "heading": "संपर्क",
+    "subtitle": "# संदेश भेजें",
+    "name": "नाम",
+    "email": "ईमेल",
+    "subject": "विषय",
+    "message": "संदेश",
+    "send": "संदेश भेजें",
+    "sending": "भेजा जा रहा है...",
+    "success": "संदेश भेज दिया गया! मैं जल्द ही जवाब दूँगी।",
+    "errorEmail": "कृपया सही ईमेल दर्ज करें",
+    "errorSubject": "विषय आवश्यक है",
+    "errorMessage": "संदेश कम से कम 10 अक्षरों का होना चाहिए"
+  },
+  "footer": {
+    "tagline": "कोड, कॉफी और जिज्ञासा के साथ निर्मित।",
+    "quickLinks": "त्वरित लिंक",
+    "connect": "जुड़ें"
+  }
+}

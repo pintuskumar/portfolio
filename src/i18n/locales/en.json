@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "about": "about",
+    "skills": "skills",
+    "experience": "experience",
+    "achievements": "achievements",
+    "blog": "blog",
+    "projects": "projects",
+    "contact": "contact",
+    "navigate": "navigate",
+    "toggleTheme": "Toggle theme",
+    "language": "Language"
+  },
+  "hero": {
+    "available": "Available for opportunities",
+    "downloadResume": "Download Resume",
+    "getInTouch": "Get in Touch"
+  },
+  "about": {
+    "heading": "about",
+    "subtitle": "# whoami"
+  },
+  "projects": {
+    "heading": "projects",
+    "subtitle": "# ls -la ~/work",
+    "all": "all",
+    "readCaseStudy": "read case study",
+    "source": "source",
+    "live": "live",
+    "clickForDetails": "click for details →",
+    "backToProjects": "back to projects",
+    "problem": "Problem",
+    "approach": "Approach",
+    "techDecisions": "Tech Decisions",
+    "outcomes": "Outcomes",
+    "role": "Role",
+    "duration": "Duration",
+    "screenshots": "Screenshots",
+    "nextProject": "next project",
+    "notFound": "Project not found"
+  },
+  "contact": {
+    "heading": "contact",
+    "subtitle": "# send a message",
+    "name": "name",
+    "email": "email",
+    "subject": "subject",
+    "message": "message",
+    "send": "send message",
+    "sending": "sending...",
+    "success": "Message sent! I'll get back to you soon.",
+    "errorEmail": "Please enter a valid email",
+    "errorSubject": "Subject is required",
+    "errorMessage": "Message must be at least 10 characters"
+  },
+  "footer": {
+    "tagline": "Built with code, coffee & curiosity.",
+    "quickLinks": "Quick Links",
+    "connect": "Connect"
+  }
+}

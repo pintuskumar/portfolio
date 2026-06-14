@@ -1,0 +1,1134 @@
+/* Fonts loaded via <link rel="preload"> in index.html for non-render-blocking delivery */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ─── Fluid magazine type scale ──────────────────────────────── */
+    --text-xs:   clamp(0.6875rem, 0.66rem + 0.12vw, 0.75rem);
+    --text-sm:   clamp(0.8125rem, 0.78rem + 0.18vw, 0.9375rem);
+    --text-base: clamp(0.9375rem, 0.90rem + 0.25vw, 1.0625rem);
+    --text-lg:   clamp(1.0625rem, 1.00rem + 0.40vw, 1.25rem);
+    --text-xl:   clamp(1.25rem, 1.15rem + 0.55vw, 1.5rem);
+    --text-2xl:  clamp(1.5rem, 1.35rem + 0.85vw, 1.9375rem);
+    --text-3xl:  clamp(1.875rem, 1.60rem + 1.40vw, 2.625rem);
+    --text-4xl:  clamp(2.375rem, 1.95rem + 2.15vw, 3.625rem);
+    --text-5xl:  clamp(3rem, 2.30rem + 3.50vw, 5rem);
+    --text-6xl:  clamp(3.75rem, 2.75rem + 5vw, 6.5rem);
+
+    /* Measure (line length) */
+    --measure-narrow: 32ch;
+    --measure: 64ch;
+    --measure-wide: 78ch;
+
+    /* ─── Spacing rhythm ─────────────────────────────────────────── */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+    --section-py: clamp(5rem, 8vw, 7rem);
+
+    /* ─── Noir & Gold palette ────────────────────────────────────── */
+    --background: 0 0% 4%;            /* #0a0a0a noir */
+    --foreground: 40 25% 90%;         /* warm ivory */
+
+    --card: 0 0% 7%;                  /* #121212 */
+    --card-foreground: 40 25% 90%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 40 25% 90%;
+
+    /* Primary = champagne gold */
+    --primary: 43 56% 54%;            /* #c9a84c */
+    --primary-foreground: 0 0% 4%;
+
+    /* Light gold for highlights/glow */
+    --primary-glow: 41 76% 75%;       /* #f0d78c */
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 40 25% 90%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 40 10% 55%;
+
+    /* Accent = deeper antique gold */
+    --accent: 38 60% 45%;
+    --accent-foreground: 0 0% 4%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 40 25% 95%;
+
+    --border: 43 20% 18%;             /* warm dark border */
+    --input: 43 20% 18%;
+    --ring: 43 56% 54%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 40 25% 90%;
+    --sidebar-primary: 43 56% 54%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 10%;
+    --sidebar-accent-foreground: 40 25% 90%;
+    --sidebar-border: 43 20% 18%;
+    --sidebar-ring: 43 56% 54%;
+
+    --terminal-green: 142 50% 55%;
+    --terminal-red: 0 70% 60%;
+    --terminal-yellow: 43 70% 58%;
+    --terminal-blue: 210 50% 65%;
+    --terminal-purple: 280 40% 65%;
+    --terminal-cyan: 43 56% 54%;       /* re-routed to gold for cohesion */
+
+    /* Luxe gradients & shadows */
+    --gradient-gold: linear-gradient(135deg, hsl(43 56% 54%), hsl(41 76% 75%), hsl(38 60% 45%));
+    --gradient-gold-soft: linear-gradient(90deg, transparent, hsl(43 56% 54% / 0.5), transparent);
+    --shadow-luxe: 0 30px 80px -20px hsl(0 0% 0% / 0.8), 0 0 0 1px hsl(43 56% 54% / 0.08);
+    --shadow-glow-gold: 0 0 40px hsl(43 56% 54% / 0.15), 0 0 100px hsl(43 56% 54% / 0.08);
+  }
+
+  /* ─── Light Mode (WCAG AA tuned, warm paper) ──────────────────── */
+  .light {
+    --background: 38 32% 96%;
+    --foreground: 230 28% 10%;
+
+    --card: 40 35% 99%;
+    --card-foreground: 230 28% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 12%;
+
+    /* Primary: darker cyan/teal for 4.5:1 on white */
+    --primary: 185 80% 28%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 18% 92%;
+    --secondary-foreground: 230 25% 12%;
+
+    --muted: 40 12% 90%;
+    --muted-foreground: 220 12% 35%;
+
+    /* Accent: deeper amber for legibility on light bg */
+    --accent: 28 88% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 75% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 12% 80%;
+    --input: 40 12% 80%;
+    --ring: 185 80% 28%;
+
+    --sidebar-background: 40 25% 95%;
+    --sidebar-foreground: 230 25% 12%;
+    --sidebar-primary: 185 80% 28%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 40 12% 90%;
+    --sidebar-accent-foreground: 230 25% 12%;
+    --sidebar-border: 40 12% 80%;
+    --sidebar-ring: 185 80% 28%;
+
+    /* Terminal palette — darkened for contrast on light surfaces */
+    --terminal-green: 142 65% 30%;
+    --terminal-red: 0 70% 42%;
+    --terminal-yellow: 35 85% 35%;
+    --terminal-blue: 210 75% 38%;
+    --terminal-purple: 270 55% 42%;
+    --terminal-cyan: 185 75% 30%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Fira Sans', 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: var(--text-base);
+    font-feature-settings: "ss01", "cv11", "cv02", "liga", "onum", "kern";
+    line-height: 1.72;
+    letter-spacing: 0.005em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1), color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+    color: hsl(var(--foreground));
+  }
+
+  h1 { font-size: var(--text-5xl); letter-spacing: -0.032em; line-height: 1.02; }
+  h2 { font-size: var(--text-4xl); letter-spacing: -0.024em; line-height: 1.08; }
+  h3 { font-size: var(--text-3xl); letter-spacing: -0.020em; line-height: 1.18; }
+  h4 { font-size: var(--text-2xl); letter-spacing: -0.015em; line-height: 1.28; }
+  h5 { font-size: var(--text-xl);  letter-spacing: -0.010em; line-height: 1.35; }
+  h6 { font-size: var(--text-lg);  letter-spacing: -0.005em; line-height: 1.4;  }
+
+  p { text-wrap: pretty; }
+  p + p { margin-top: 1em; }
+
+  small { font-size: var(--text-sm); }
+
+  blockquote {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: var(--text-2xl);
+    line-height: 1.4;
+    letter-spacing: -0.012em;
+    font-style: italic;
+    color: hsl(var(--foreground) / 0.92);
+    border-left: 2px solid hsl(var(--primary) / 0.55);
+    padding-left: 1.25rem;
+    max-width: var(--measure);
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.25);
+    color: hsl(var(--foreground));
+  }
+
+  a {
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--primary) / 0.45);
+    border-radius: 4px;
+  }
+
+  /* Refined scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: hsl(var(--background)); }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 10px;
+    border: 2px solid hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb:hover { background: hsl(var(--primary) / 0.5); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Typography utilities ───────────────────────────────────────── */
+.text-balance { text-wrap: balance; }
+.text-pretty  { text-wrap: pretty; }
+.tabular { font-variant-numeric: tabular-nums; }
+.oldstyle { font-variant-numeric: oldstyle-nums proportional-nums; }
+.smallcaps { font-variant-caps: all-small-caps; letter-spacing: 0.08em; }
+
+/* Editorial measure helpers */
+.measure        { max-width: var(--measure); }
+.measure-narrow { max-width: var(--measure-narrow); }
+.measure-wide   { max-width: var(--measure-wide); }
+
+/* Magazine display headline */
+.display {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: var(--text-6xl);
+  line-height: 0.98;
+  letter-spacing: -0.038em;
+  text-wrap: balance;
+}
+
+/* Editorial lede paragraph */
+.lede {
+  font-family: 'Fira Sans', 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: var(--text-xl);
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+  color: hsl(var(--foreground) / 0.82);
+  max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+/* Refined eyebrow */
+.eyebrow {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: hsl(var(--primary) / 0.85);
+}
+
+/* Drop cap */
+.dropcap::first-letter {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 4.4em;
+  line-height: 0.86;
+  float: left;
+  margin: 0.08em 0.16em 0 -0.04em;
+  color: hsl(var(--primary));
+  font-weight: 400;
+}
+
+/* Unified section heading block */
+.section-heading-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: hsl(var(--terminal-cyan));
+}
+.section-heading-rule {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(to right, hsl(var(--border)), transparent);
+}
+
+/* Unified card surface — 2-layer letterpress with gold-tinted top edge */
+.surface-card {
+  position: relative;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border) / 0.8);
+  border-radius: 0.75rem;
+  box-shadow:
+    inset 0 1px 0 hsl(var(--primary) / 0.12),
+    inset 0 -1px 0 hsl(var(--foreground) / 0.04),
+    0 1px 2px hsl(var(--background) / 0.4);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.surface-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  border-radius: 0.75rem 0.75rem 0 0;
+  background: linear-gradient(to right,
+    transparent,
+    hsl(var(--primary) / 0.35),
+    transparent);
+  pointer-events: none;
+}
+.surface-card:hover {
+  transform: translateY(-2px);
+  border-color: hsl(var(--primary) / 0.4);
+  box-shadow:
+    inset 0 1px 0 hsl(var(--primary) / 0.2),
+    inset 0 -1px 0 hsl(var(--foreground) / 0.05),
+    0 10px 30px hsl(var(--primary) / 0.08);
+}
+
+/* Prompt-line motif */
+.prompt-line {
+  font-family: 'JetBrains Mono', monospace;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.75rem;
+}
+.prompt-line::before {
+  content: '$ ';
+  color: hsl(var(--terminal-green));
+  margin-right: 0.125rem;
+}
+
+/* Light mode refinements */
+.light body {
+  background:
+    radial-gradient(1200px 600px at 50% -20%, hsl(185 60% 90% / 0.6), transparent 60%),
+    hsl(var(--background));
+}
+.light .terminal-window {
+  background: hsl(40 40% 99%);
+  box-shadow: 0 1px 0 hsl(var(--foreground) / 0.04), inset 0 1px 0 hsl(0 0% 100% / 0.8);
+}
+.light .terminal-header {
+  background: hsl(40 25% 94%);
+}
+.light .surface-card {
+  box-shadow:
+    inset 0 1px 0 hsl(0 0% 100% / 0.8),
+    inset 0 -1px 0 hsl(var(--foreground) / 0.04),
+    0 1px 2px hsl(var(--foreground) / 0.04),
+    0 4px 12px hsl(var(--foreground) / 0.03);
+}
+.light .surface-card::before {
+  background: linear-gradient(to right,
+    transparent,
+    hsl(var(--primary) / 0.5),
+    transparent);
+}
+.light .gradient-text {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.light ::selection {
+  background: hsl(var(--primary) / 0.18);
+  color: hsl(var(--foreground));
+}
+.light ::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border: 2px solid hsl(var(--background));
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Gold gradient text */
+.gradient-text {
+  background: var(--gradient-gold);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shift 8s ease-in-out infinite;
+}
+
+@keyframes gold-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Gold glow border */
+.glow-border {
+  box-shadow: var(--shadow-glow-gold), inset 0 0 30px hsl(43 56% 54% / 0.04);
+}
+
+/* Gold horizontal divider */
+.gold-divider {
+  height: 1px;
+  width: 100%;
+  background: var(--gradient-gold-soft);
+}
+
+/* Dot grid background — gold */
+.dot-grid {
+  background-image: radial-gradient(circle, hsl(43 56% 54% / 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Terminal window styling */
+.terminal-window {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-luxe);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: hsl(var(--secondary));
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-dot-red { background: hsl(var(--terminal-red)); }
+.terminal-dot-yellow { background: hsl(var(--terminal-yellow)); }
+.terminal-dot-green { background: hsl(var(--terminal-green)); }
+
+/* Syntax colors */
+.syn-keyword { color: hsl(var(--terminal-purple)); }
+.syn-string { color: hsl(var(--terminal-green)); }
+.syn-number { color: hsl(var(--terminal-yellow)); }
+.syn-comment { color: hsl(var(--muted-foreground)); }
+.syn-fn { color: hsl(var(--terminal-blue)); }
+.syn-property { color: hsl(var(--primary)); }
+
+/* Line numbers */
+.line-number {
+  color: hsl(var(--muted-foreground) / 0.5);
+  user-select: none;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  min-width: 2rem;
+  text-align: right;
+  padding-right: 1rem;
+}
+
+/* ─── Noise / film grain overlay ─────────────────────────────────── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* ─── Gradient orb for hero (gold) ───────────────────────────────── */
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -20px) scale(1.05); }
+  66% { transform: translate(-20px, 15px) scale(0.95); }
+}
+
+.hero-orb {
+  position: absolute;
+  width: 720px;
+  height: 720px;
+  border-radius: 50%;
+  background: radial-gradient(circle, hsl(43 56% 54% / 0.18) 0%, hsl(41 76% 75% / 0.07) 38%, transparent 72%);
+  filter: blur(90px);
+  animation: orb-float 28s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* ─── Editorial luxury utilities ──────────────────────────────────── */
+
+/* Double-rule frame — couture photo border */
+.editorial-frame {
+  position: relative;
+  padding: 6px;
+  border: 1px solid hsl(var(--primary) / 0.55);
+  border-radius: 0.5rem;
+  background: hsl(var(--background));
+}
+.editorial-frame::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid hsl(var(--primary) / 0.22);
+  border-radius: calc(0.5rem - 3px);
+  pointer-events: none;
+}
+
+/* Hairline gold divider with fade-out tails */
+.hairline-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.6), transparent);
+}
+
+/* Gold sweep — one-time shimmer across a headline */
+@keyframes gold-sweep {
+  0%   { background-position: -120% 0; }
+  100% { background-position: 220% 0; }
+}
+.gold-sweep {
+  background: linear-gradient(
+    100deg,
+    hsl(var(--foreground)) 0%,
+    hsl(var(--foreground)) 40%,
+    hsl(var(--primary-glow)) 50%,
+    hsl(var(--foreground)) 60%,
+    hsl(var(--foreground)) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-sweep 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s 1 both;
+}
+
+/* Drop cap — large serif initial letter */
+.drop-cap::first-letter {
+  font-family: 'DM Serif Display', Georgia, serif;
+  float: left;
+  font-size: 3.6em;
+  line-height: 0.85;
+  padding: 0.08em 0.14em 0 0;
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Chip hairline — understated CTA / quick-question style */
+.chip-hairline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.9rem;
+  border: 1px solid hsl(var(--primary) / 0.25);
+  border-radius: 9999px;
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  transition: color 0.5s ease, border-color 0.5s ease, background 0.5s ease;
+}
+.chip-hairline:hover {
+  color: hsl(var(--primary));
+  border-color: hsl(var(--primary) / 0.6);
+  background: hsl(var(--primary) / 0.04);
+}
+
+/* Slow gold underline reveal — for editorial card titles */
+.gold-underline {
+  background-image: linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  padding-bottom: 2px;
+}
+.group:hover .gold-underline {
+  background-size: 100% 1px;
+}
+
+/* ─── Terminal hover glow ────────────────────────────────────────── */
+.terminal-window-hover {
+  transition: box-shadow 0.8s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.terminal-window-hover:hover {
+  box-shadow: 0 0 60px hsl(43 56% 54% / 0.18), 0 0 120px hsl(43 56% 54% / 0.08), var(--shadow-luxe);
+  border-color: hsl(var(--primary) / 0.35);
+}
+
+/* ─── Git line animated gradient ─────────────────────────────────── */
+@keyframes git-line-pulse {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 0% 100%; }
+}
+
+.git-line {
+  position: absolute;
+  left: 19px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, hsl(var(--primary) / 0.4), hsl(var(--terminal-purple) / 0.2), hsl(var(--primary) / 0.05));
+  background-size: 100% 200%;
+  animation: git-line-pulse 4s ease-in-out infinite;
+}
+
+/* ─── Skill progress gradient with shimmer ───────────────────────── */
+.skill-progress-shimmer {
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.7));
+  position: relative;
+  overflow: hidden;
+}
+.skill-progress-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.25) 50%, transparent 100%);
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ─── Ripple button effect ───────────────────────────────────────── */
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+}
+.ripple-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--ripple-x, 50%) var(--ripple-y, 50%), hsl(var(--primary) / 0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.ripple-btn:active::after {
+  opacity: 1;
+}
+
+/* ─── Focus glow for inputs ──────────────────────────────────────── */
+.input-focus-glow:focus-within {
+  box-shadow: 0 0 0 1px hsl(var(--primary) / 0.2), 0 0 15px hsl(var(--primary) / 0.05);
+}
+
+/* ─── Card lift ──────────────────────────────────────────────────── */
+.card-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px hsl(var(--primary) / 0.06), 0 4px 12px hsl(0 0% 0% / 0.2);
+}
+
+/* ─── Branch badge ───────────────────────────────────────────────── */
+.branch-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  border: 1px solid;
+}
+
+/* ─── Quotation mark ─────────────────────────────────────────────── */
+.quote-mark {
+  font-family: Georgia, serif;
+  font-size: 3rem;
+  line-height: 1;
+  color: hsl(var(--primary) / 0.15);
+}
+
+/* ─── Section divider with line-draw effect ──────────────────────── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: hsl(var(--muted-foreground) / 0.4);
+  padding: 0 1rem;
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: hsl(var(--border));
+  display: block;
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+/* IntersectionObserver-driven section reveal (replaces motion.section) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
+}
+.reveal-on-scroll.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Matrix rain column animation (CSS only, replaces per-element framer-motion) */
+@keyframes matrix-fall {
+  0%   { transform: translateY(-110%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+.matrix-column {
+  animation-name: matrix-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee 45s linear infinite reverse;
+}
+
+.animate-marquee:hover,
+.animate-marquee-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Scroll progress bar ────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
+  z-index: 9999;
+  transition: width 50ms linear;
+}
+
+/* ─── Scan-line effect ───────────────────────────────────────────── */
+@keyframes scan-line {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.terminal-scanline::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(transparent 50%, hsl(var(--primary) / 0.015) 50%);
+  background-size: 100% 4px;
+  z-index: 1;
+}
+
+/* ─── Learning ticker ────────────────────────────────────────────── */
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: ticker-scroll 30s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Testimonial gradient border on hover ───────────────────────── */
+.testimonial-card {
+  position: relative;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.testimonial-card:hover {
+  border-color: hsl(var(--primary) / 0.25);
+  box-shadow: 0 8px 30px hsl(var(--primary) / 0.06);
+}
+
+/* ─── Testimonial edge fade ──────────────────────────────────────── */
+.testimonial-edge-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(
+    to right,
+    hsl(var(--background)) 0%,
+    transparent 8%,
+    transparent 92%,
+    hsl(var(--background)) 100%
+  );
+}
+
+/* ─── Project card code pattern ──────────────────────────────────── */
+.project-code-pattern {
+  background-image: radial-gradient(circle, hsl(var(--foreground) / 0.08) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+/* ─── Typing dots animation ──────────────────────────────────────── */
+.typing-dots::after {
+  content: '';
+  animation: typing-dots 1.4s steps(4, end) infinite;
+}
+
+@keyframes typing-dots {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+  100% { content: ''; }
+}
+
+/* ─── Rotating gradient border ───────────────────────────────────── */
+@keyframes rotate-border {
+  0% { --border-angle: 0deg; }
+  100% { --border-angle: 360deg; }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.rotating-border-wrap {
+  border: 1px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image:
+    linear-gradient(hsl(var(--card)), hsl(var(--card))),
+    conic-gradient(from var(--border-angle), hsl(var(--primary) / 0.4), hsl(var(--accent) / 0.2), hsl(var(--terminal-purple) / 0.3), hsl(var(--primary) / 0.4));
+  animation: rotate-border 6s linear infinite;
+}
+
+/* ─── Skeleton shimmer for project cards ─────────────────────────── */
+@keyframes skeleton-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.skeleton-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 30%, hsl(var(--foreground) / 0.03) 50%, transparent 70%);
+  animation: skeleton-shimmer 3s ease-in-out infinite;
+}
+
+/* ─── Confetti burst ─────────────────────────────────────────────── */
+.confetti-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 10;
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-20px) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translateY(300px) rotate(720deg) scale(0); opacity: 0; }
+}
+
+.confetti-piece {
+  position: absolute;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  animation: confetti-fall 1.5s ease-out forwards;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.4);
+}
+
+/* Skip to content link */
+.skip-to-content {
+  @apply fixed top-0 left-1/2 -translate-x-1/2 -translate-y-full z-[200] px-6 py-3 bg-primary text-primary-foreground font-mono text-sm rounded-b-lg transition-transform duration-200 focus:translate-y-0;
+}
+
+/* Mobile bottom nav spacing */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 60px;
+  }
+}
+
+/* Avatar gradient ring */
+.avatar-gradient-ring {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--terminal-purple)));
+}
+
+/* Achievement shimmer */
+.achievement-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--primary) / 0.15) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.achievement-card:hover .achievement-shimmer {
+  animation: shimmer 0.8s ease-in-out;
+}
+
+
+/* ─── Signature: Page-edge vignette (~8% softness, responsive) ───── */
+.page-vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* mobile: tight screen → softer, wider spread so it doesn't crowd content */
+  background: radial-gradient(ellipse at center, transparent 55%, hsl(0 0% 0% / 0.06) 80%, hsl(0 0% 0% / 0.14) 100%);
+}
+@media (min-width: 640px) {
+  .page-vignette {
+    /* tablet: mid spread */
+    background: radial-gradient(ellipse at center, transparent 60%, hsl(0 0% 0% / 0.07) 84%, hsl(0 0% 0% / 0.16) 100%);
+  }
+}
+@media (min-width: 1024px) {
+  .page-vignette {
+    /* desktop: current premium feel */
+    background: radial-gradient(ellipse at center, transparent 62%, hsl(0 0% 0% / 0.08) 88%, hsl(0 0% 0% / 0.18) 100%);
+  }
+}
+.light .page-vignette { display: none; }
+
+/* ─── Gold-leaf wipe — slower headline reveal (one-time) ─────────── */
+@keyframes gold-leaf-wipe {
+  0%   { background-position: 130% 0; }
+  100% { background-position: -30% 0; }
+}
+.gold-leaf {
+  background: linear-gradient(
+    100deg,
+    hsl(var(--foreground)) 0%,
+    hsl(var(--foreground)) 35%,
+    hsl(var(--primary)) 48%,
+    hsl(var(--primary-glow)) 52%,
+    hsl(var(--foreground)) 65%,
+    hsl(var(--foreground)) 100%
+  );
+  background-size: 240% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gold-leaf-wipe 2.4s cubic-bezier(0.22, 1, 0.36, 1) 1.6s 1 both;
+}
+
+/* ─── Editorial hover-fill button ────────────────────────────────── */
+.btn-luxe {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid hsl(var(--primary) / 0.55);
+  color: hsl(var(--primary));
+  background: transparent;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.35s ease, border-color 0.35s ease;
+}
+.btn-luxe::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: hsl(var(--primary));
+  transform: translateX(-101%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: -1;
+}
+.btn-luxe:hover { color: hsl(var(--primary-foreground)); border-color: hsl(var(--primary)); }
+.btn-luxe:hover::before { transform: translateX(0); }
+
+/* ─── Typography: hanging punctuation + small caps utilities ──── */
+.hang-punct { hanging-punctuation: first last; }
+.smallcaps { font-variant: small-caps; letter-spacing: 0.06em; }
+
+/* ─── Section label — small-caps with gold hairline ──────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: hsl(var(--primary) / 0.85);
+  margin-bottom: 0.75rem;
+}
+.section-label::before,
+.section-label::after {
+  content: "";
+  height: 1px;
+  width: 28px;
+  background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.7), transparent);
+}
+
+/* ─── Ken Burns — slow scale on hover for editorial imagery ──── */
+.ken-burns { overflow: hidden; }
+.ken-burns > * {
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.group:hover .ken-burns > *,
+.ken-burns:hover > * {
+  transform: scale(1.04);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ken-burns > * { transition: none; transform: none !important; }
+}
+
+/* ─── Section arrival transition (dot-nav fade-and-lift) ───────── */
+@keyframes section-arrive {
+  0% { opacity: 0.001; transform: translate3d(0, 8px, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.section-arrive {
+  animation: section-arrive 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-arrive { animation: none; }
+}
+
+/* ─── Section heading sticky beat ───────────────────────────────
+   Pins the eyebrow row to the top for ~200px as the section scrolls in.
+*/
+.section-heading-sticky {
+  position: sticky;
+  top: 5rem;
+  z-index: 5;
+  height: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-heading-sticky { position: static; }
+}
