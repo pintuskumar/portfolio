@@ -239,7 +239,7 @@ export default function Contact() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             onSubmit={handleSubmit}
-            className="space-y-6 p-5 sm:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm"
+            className="flex flex-col space-y-6 p-5 sm:p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm lg:self-stretch"
           >
             {/* Name */}
             <div>
@@ -280,7 +280,7 @@ export default function Contact() {
             </div>
 
             {/* Message */}
-            <div>
+            <div className="flex-1 flex flex-col">
               <label
                 htmlFor="message"
                 className="block text-sm font-medium text-gray-400 mb-2"
@@ -294,7 +294,7 @@ export default function Contact() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Tell me about your project..."
-                className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-600 outline-none transition-all duration-300 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/20 focus:bg-white/[0.07] resize-none"
+                className="flex-1 w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-600 outline-none transition-all duration-300 focus:border-purple-500/60 focus:ring-2 focus:ring-purple-500/20 focus:bg-white/[0.07] resize-none"
               />
             </div>
 

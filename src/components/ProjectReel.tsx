@@ -103,8 +103,8 @@ export default function ProjectReel() {
     if (!el) return;
 
     const handleWheel = (e: WheelEvent) => {
-      // Only intercept vertical scroll when hovering over the reel
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      // Only intercept significant vertical scroll (threshold to avoid accidental triggers)
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && Math.abs(e.deltaY) > 30) {
         const maxScroll = el.scrollWidth - el.clientWidth;
         const atStart = el.scrollLeft <= 0 && e.deltaY < 0;
         const atEnd = el.scrollLeft >= maxScroll - 1 && e.deltaY > 0;
@@ -137,7 +137,12 @@ export default function ProjectReel() {
               <p className="mt-2 text-gray-400 text-sm sm:text-base flex items-center gap-2">
                 <span className="hidden sm:inline">Scroll sideways to explore</span>
                 <span className="sm:hidden">Swipe to explore</span>
-                <ArrowRight className="h-3 w-3" />
+                <motion.span
+                  animate={{ x: [0, 8, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </motion.span>
               </p>
             </div>
 
